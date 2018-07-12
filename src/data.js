@@ -1,6 +1,6 @@
 // let email = document.getElementById('email').value;
 // let password = document.getElementById('password').value;
- register = () => {
+ function register(){
   let email = document.getElementById('email').value;
   console.log(email);
   let password = document.getElementById('password').value;
@@ -15,7 +15,7 @@
 });
 }
 
-ingreso = () => {
+function ingreso() {
   let email2 = document.getElementById('email2').value;
   let password2 = document.getElementById('password2').value;
   firebase.auth().signInWithEmailAndPassword(email2, password2).catch(function(error) {
@@ -26,7 +26,7 @@ ingreso = () => {
 });
 }
 
-const observador = () =>{
+function observador(){
   firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     console.log('no existe usuario');
@@ -43,24 +43,35 @@ const observador = () =>{
   } else {
     // User is signed out.
     console.log('no existe usuario');
+    content.innerHTML = `
+
+  `
+
     // ...
   }
 });
 }
 observador();
 
-const aparece = (user) => {
+function aparece(user){
   let user = user;
   let contenido = document.getElementById('content');
   if (user.emailVerified) {
     content.innerHTML = `
-    <p>Bienvenido</p>
-    <button onclick="close()">Cerrar sesión</button>
-  `  
+    <div class="container mt-5">
+    <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Bienvenido! ${user.email}</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
+    <button onclick="close()" class="btn-danger">Cerrar sesión</button>
+    </div>
+  `
   }
 }
 
-const close = ()=>{
+function close (){
   firebase.auth().signOut()
   .then(function(){
     console.log('Saliendo...');
@@ -70,7 +81,7 @@ const close = ()=>{
   })
 }
 
-const verificar = ()=>{
+function verificar(){
   var user = firebase.auth().currentUser;
   user.sendEmailVerification().then(function(){
     console.log('enviando correo');
