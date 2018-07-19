@@ -1,3 +1,6 @@
+// let email = document.getElementById('email').value;
+// let password = document.getElementById('password').value;
+ function register(){// CREO FUNCION QUE ME PERMITE HACER LE REGISTRO DE USURAIOS
 let config = {
   apiKey: "AIzaSyAyU-144GII0BR3pdmRcq70rWM_9-fKthY",
   authDomain: "socialnetwork-proyect.firebaseapp.com",
