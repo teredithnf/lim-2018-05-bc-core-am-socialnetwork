@@ -43,7 +43,7 @@ function observador(){
   firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log('no existe usuario');
-    aparece();
+    // aparece();
     // User is signed in.
     let displayName = user.displayName;
     let email = user.email;
@@ -56,18 +56,19 @@ function observador(){
   } else {
     // User is signed out.
     console.log('no existe usuario');
-    content.innerHTML = `
+    contenido.innerHTML = `
   `
   }
 });
 }
 observador();
+// let contenido = document.getElementById('content');
 
 function aparece(user){
   let user = user;
   let contenido = document.getElementById('content');
   if (user.emailVerified) {
-    content.innerHTML = `
+    contenido.innerHTML = `
     <div class="container mt-5">
     <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Bienvenido! ${user.email}</h4>
@@ -117,31 +118,19 @@ facebook.addEventListener('click', () => {
     console.log(error.credential);
  });
 })
-// function facebook(){
-//   let provider = new firebase.auth.FacebookAuthProvider();
-//   provider.setCustomParameters({
-//   'display': 'popup'
-//   });
-//   firebase.auth().signInWithPopup(provider)
-//     .then((result) => {
-//       console.log('has iniciado sesion');
-//   }).catch((error)=> {
-//     console.log(error.code);
-//     console.log(error.message);
-//     console.log(error.email);
-//     console.log(error.credential);
-//  });
-// }
 
-function gmail(){
+let gmail = document.getElementById('gmail');
+gmail.addEventListener('click', ()=> {
   let provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result)=> {
     var token = result.credential.accessToken;
     var user = result.user;
+    console.log(user)
+    contenido.innerHTML = `Bienvenido`
   }).catch((error) => {
     console.log(error.code);
     console.log(error.message);
     console.log(error.email);
     console.log(error.credential);
 });
-}
+})
