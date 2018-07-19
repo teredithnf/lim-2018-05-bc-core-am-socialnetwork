@@ -117,21 +117,6 @@ facebook.addEventListener('click', () => {
     console.log(error.credential);
  });
 })
-// function facebook(){
-//   let provider = new firebase.auth.FacebookAuthProvider();
-//   provider.setCustomParameters({
-//   'display': 'popup'
-//   });
-//   firebase.auth().signInWithPopup(provider)
-//     .then((result) => {
-//       console.log('has iniciado sesion');
-//   }).catch((error)=> {
-//     console.log(error.code);
-//     console.log(error.message);
-//     console.log(error.email);
-//     console.log(error.credential);
-//  });
-// }
 
 function gmail(){
   let provider = new firebase.auth.GoogleAuthProvider();
