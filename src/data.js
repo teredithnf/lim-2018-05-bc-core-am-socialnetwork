@@ -1,6 +1,3 @@
-// let email = document.getElementById('email').value;
-// let password = document.getElementById('password').value;
- function register(){// CREO FUNCION QUE ME PERMITE HACER LE REGISTRO DE USURAIOS
 let config = {
   apiKey: "AIzaSyAyU-144GII0BR3pdmRcq70rWM_9-fKthY",
   authDomain: "socialnetwork-proyect.firebaseapp.com",
@@ -121,6 +118,21 @@ facebook.addEventListener('click', () => {
     console.log(error.credential);
  });
 })
+// function facebook(){
+//   let provider = new firebase.auth.FacebookAuthProvider();
+//   provider.setCustomParameters({
+//   'display': 'popup'
+//   });
+//   firebase.auth().signInWithPopup(provider)
+//     .then((result) => {
+//       console.log('has iniciado sesion');
+//   }).catch((error)=> {
+//     console.log(error.code);
+//     console.log(error.message);
+//     console.log(error.email);
+//     console.log(error.credential);
+//  });
+// }
 
 let gmail = document.getElementById('gmail');
 gmail.addEventListener('click', ()=> {
