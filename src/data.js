@@ -1,6 +1,6 @@
 // let email = document.getElementById('email').value;
 // let password = document.getElementById('password').value;
- function register(){
+ function register(){// CREO FUNCION QUE ME PERMITE HACER LE REGISTRO DE USURAIOS 
   let email = document.getElementById('email').value;
   console.log(email);
   let password = document.getElementById('password').value;
