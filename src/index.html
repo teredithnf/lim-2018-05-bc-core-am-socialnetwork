@@ -77,6 +77,19 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+
+    <br>
+
+    <div id="divPostsContainer">
+      <div id="divPostsArea">
+          <h2>Ideas para compartir</h2>
+          <textarea name="txtPost" id="txtPost" cols="100" rows="5" placeholder="¿Que ideas tienes?"></textarea>
+          <button id="btnPublicar" class="btn btn-info" onClick="guardar()" >Publicar</button>
+      </div>
+      <div id="divPosts"></div>
+
+    </div>
+
   </div>
 </div>
 
@@ -88,5 +101,6 @@
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script src="data.js"></script>
     <script src="main.js"></script>
+    <script src="post.js"></script>
   </body>
 </html>

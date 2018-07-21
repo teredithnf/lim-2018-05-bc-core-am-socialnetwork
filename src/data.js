@@ -8,6 +8,8 @@ let config = {
 };
 firebase.initializeApp(config);
 
+let userProfile = {};
+
 function register(){
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
@@ -164,4 +166,14 @@ function guardaDatos(user){
   }
   firebase.database().ref('angie/' + user.uid)
   .set(usuario)
+
+  userProfile = getUserProfile(user); //json
+}
+
+const getUserProfile = (user) => {
+  return {
+    uid: user.uid,
+    nombre: user.displayName,
+    foto: user.photoURL
+  };
 }
