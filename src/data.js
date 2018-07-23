@@ -44,7 +44,7 @@ function ingreso() {
 function observador(){
   firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('no existe usuario');
+    console.log('existe usuario');
     // aparece();
     // User is signed in.
     let displayName = user.displayName;
@@ -54,12 +54,13 @@ function observador(){
     let isAnonymous = user.isAnonymous;
     let uid = user.uid;
     let providerData = user.providerData;
+    content.innerHTML = ` bienvenido ${user.displayName}`
     guardaDatos(user)
     // ...
   } else {
     // User is signed out.
     console.log('no existe usuario');
-    contenido.innerHTML = `
+    content.innerHTML = `
   `
   }
 });
@@ -69,9 +70,9 @@ observador();
 
 function aparece(user){
   let user = user;
-  let contenido = document.getElementById('content');
+  // let contenido = document.getElementById('content');
   if (user.emailVerified) {
-    contenido.innerHTML = `
+    content.innerHTML = `
     <div class="container mt-5">
     <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Bienvenido! ${user.email}</h4>
