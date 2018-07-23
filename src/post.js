@@ -1,4 +1,3 @@
-
 // Initialize Cloud Firestore through Firebase
 var db = firebase.firestore();
 db.settings({timestampsInSnapshots: true});
@@ -18,11 +17,7 @@ const listar = () =>{
             <button class="btn btn-warning" onclick="editar('${post.id}','${post.data().post}')">Editar</button>
         </div>`
       });
-<<<<<<< HEAD
   });
-=======
-  });    
->>>>>>> 06d57a5955b9c7acb8df9788f99b440b7e6eb6c8
 }
 
 const guardar  = () => {
@@ -49,29 +44,15 @@ const guardar  = () => {
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
-<<<<<<< HEAD
-
     } else {
-
     }
-
   }
 
-=======
-        
-    } else {
-        
-    }
-  
-  }
-  
->>>>>>> 06d57a5955b9c7acb8df9788f99b440b7e6eb6c8
   ///EDITAR DOCUMENTOS//
   function editar(id, post) {
     document.getElementById('txtPost').value = post;
     const btnPublicar = document.getElementById('btnPublicar');
     btnPublicar.innerHTML = 'Modificar';
-<<<<<<< HEAD
 
     btnPublicar.onclick = function() {
       var postReference = db.collection("posts").doc(id);
@@ -83,21 +64,6 @@ const guardar  = () => {
         //var txt;
         var r = confirm("Estas seguro de Editar la publicacion");
         if (r == true) {
-
-=======
-  
-    btnPublicar.onclick = function() {
-      var postReference = db.collection("posts").doc(id);
-  
-      let txtPostValue = document.getElementById('txtPost').value;
-      
-      // TODO colocar alerta de confirmacion de actuaizar datos 
-      
-        //var txt;
-        var r = confirm("Estas seguro de Editar la publicacion");
-        if (r == true) {
-          
->>>>>>> 06d57a5955b9c7acb8df9788f99b440b7e6eb6c8
         postReference.update({
             post : txtPostValue
           })
@@ -108,29 +74,12 @@ const guardar  = () => {
               // The document probably doesn't exist.
               console.error("Error updating document: ", error);
           });
-<<<<<<< HEAD
-
         } else {
-
-=======
-            
-        } else {
-            
->>>>>>> 06d57a5955b9c7acb8df9788f99b440b7e6eb6c8
         }
         btnPublicar.innerHTML = "Publicar";
         btnPublicar.onclick = guardar;
         document.getElementById('txtPost').value = '';
-<<<<<<< HEAD
-
     }
   }
 
   listar();
-=======
-  
-    }
-  }
-
-  listar();
->>>>>>> 06d57a5955b9c7acb8df9788f99b440b7e6eb6c8
