@@ -17,11 +17,7 @@ const listar = () =>{
             <button class="btn btn-warning" onclick="editar('${post.id}','${post.data().post}')">Editar</button>
         </div>`
       });
-<<<<<<< HEAD
   });
-=======
-  });    
->>>>>>> f5b036217bb75d4e93caf88adc0d8d98a48c86b8
 }
 
 
@@ -43,7 +39,7 @@ const guardar  = () => {
           console.error("Error adding document: ", error);
         });
     }
-   
+
 }
 
   ///// BORRAR DOCUMENTOS
@@ -55,12 +51,11 @@ const guardar  = () => {
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
-<<<<<<< HEAD
-=======
 
->>>>>>> f5b036217bb75d4e93caf88adc0d8d98a48c86b8
     } else {
+
     }
+
   }
 
   ///EDITAR DOCUMENTOS//
@@ -68,7 +63,6 @@ const guardar  = () => {
     document.getElementById('txtPost').value = post;
     const btnPublicar = document.getElementById('btnPublicar');
     btnPublicar.innerHTML = 'Modificar';
-<<<<<<< HEAD
 
     btnPublicar.onclick = function() {
       var postReference = db.collection("posts").doc(id);
@@ -80,20 +74,7 @@ const guardar  = () => {
         //var txt;
         var r = confirm("Estas seguro de Editar la publicacion");
         if (r == true) {
-=======
-  
-    btnPublicar.onclick = function() {
-      var postReference = db.collection("posts").doc(id);
-  
-      let txtPostValue = document.getElementById('txtPost').value;
-      
-      // TODO colocar alerta de confirmacion de actuaizar datos 
-      
-        //var txt;
-        var r = confirm("Estas seguro de Editar la publicacion");
-        if (r == true) {
-          
->>>>>>> f5b036217bb75d4e93caf88adc0d8d98a48c86b8
+
         postReference.update({
             post : txtPostValue
           })
@@ -104,21 +85,14 @@ const guardar  = () => {
               // The document probably doesn't exist.
               console.error("Error updating document: ", error);
           });
-<<<<<<< HEAD
+
         } else {
-=======
-            
-        } else {
-            
->>>>>>> f5b036217bb75d4e93caf88adc0d8d98a48c86b8
+
         }
         btnPublicar.innerHTML = "Publicar";
         btnPublicar.onclick = guardar;
         document.getElementById('txtPost').value = '';
-<<<<<<< HEAD
-=======
-  
->>>>>>> f5b036217bb75d4e93caf88adc0d8d98a48c86b8
+
     }
   }
 
