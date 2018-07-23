@@ -21,19 +21,26 @@ const listar = () =>{
   });    
 }
 
+
 const guardar  = () => {
     let post = document.getElementById('txtPost').value;
-    db.collection("posts").add({
+    if(post.trim().length === 0){
+      alert('Debe ingresar un mensaje');
+      return;
+    }else{
+      db.collection("posts").add({
         post: post,
         userProfile: userProfile
-    })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-        document.getElementById('txtPost').value = '';
       })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
+      .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          document.getElementById('txtPost').value = '';
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+    }
+   
 }
 
   ///// BORRAR DOCUMENTOS
