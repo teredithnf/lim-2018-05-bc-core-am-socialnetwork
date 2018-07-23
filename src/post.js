@@ -14,12 +14,27 @@ const listar = () =>{
           <div class="container mt-5">
             <div>${post.data().userProfile.nombre}</div>
             <div>${post.data().post}</div>
-            <button class="btn btn-danger" onclick="eliminar('${post.id}')">Eliminar</button>
-            <button class="btn btn-warning" onclick="editar('${post.id}','${post.data().post}')">Editar</button>
+            <button id="btnEliminar"class="btn btn-danger" onclick="eliminar('${post.id}')">Eliminar</button>
+            <button id="btnEditar"class="btn btn-warning" onclick="editar('${post.id}','${post.data().post}')">Editar</button>
+            <p id="contador">0</p>
+    <button type="button" class="btn btn-light" onclick="countLikes()"><img class="w-80" src="../src/image/like.png"/>LIKE</button>
         </div>`
       });
   });    
 }
+
+let contador = 0;
+    let time;
+    let on = false;
+    let seconds = 0;
+
+    let countLikes = () =>{
+      if(seconds >= 10){
+        document.getElementById('contador').innerHTML = contador + 0;
+      }else{
+        document.getElementById('contador').innerHTML = contador += 1;
+      }
+    }
 
 
 const guardar  = () => {
@@ -44,7 +59,7 @@ const guardar  = () => {
 }
 
   ///// BORRAR DOCUMENTOS
-  function eliminar(id) {
+  const eliminar = (id) => {
     var r = confirm("Estas seguro de Editar la publicacion");
     if (r == true) {
         db.collection("posts").doc(id).delete().then(function() {
@@ -61,17 +76,16 @@ const guardar  = () => {
 
   ///EDITAR DOCUMENTOS//
   function editar(id, post) {
-    document.getElementById('txtPost').value = post;
-    const btnPublicar = document.getElementById('btnPublicar');
-    btnPublicar.innerHTML = 'Modificar';
+    document.getElementById('divPosts').value = post;
+    const btnEditar = document.getElementById('btnEditar');
+    btnEditar.innerHTML = 'Guardar';
   
-    btnPublicar.onclick = function() {
+    btnEditar.onclick = function() {
       var postReference = db.collection("posts").doc(id);
   
-      let txtPostValue = document.getElementById('txtPost').value;
+      let txtPostValue = document.getElementById('divPosts').value;
       
       // TODO colocar alerta de confirmacion de actuaizar datos 
-      
         //var txt;
         var r = confirm("Estas seguro de Editar la publicacion");
         if (r == true) {
@@ -90,9 +104,9 @@ const guardar  = () => {
         } else {
             
         }
-        btnPublicar.innerHTML = "Publicar";
-        btnPublicar.onclick = guardar;
-        document.getElementById('txtPost').value = '';
+        btnEditar.innerHTML = "Publicar";
+        btnEditar.onclick = guardar;
+        //document.getElementById('txtPost').value = '';
   
     }
   }
