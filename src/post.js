@@ -13,12 +13,15 @@ const listar = () =>{
           divPosts.innerHTML += `
           <div class="container mt-5">
             <div>${post.data().userProfile.nombre}</div>
-            <div>${post.data().post}</div>
+            <input id=publicado"">${post.data().post}</input>
             <button id="btnEliminar"class="btn btn-danger" onclick="eliminar('${post.id}')">Eliminar</button>
             <button id="btnEditar"class="btn btn-warning" onclick="editar('${post.id}','${post.data().post}')">Editar</button>
             <p id="contador">0</p>
     <button type="button" class="btn btn-light" onclick="countLikes()"><img class="w-80" src="../src/image/like.png"/>LIKE</button>
         </div>`
+
+      let publicado = document.getElementById('publicado');
+        publicado.disabled = true;
       });
   });    
 }
