@@ -51,11 +51,7 @@ const guardar  = () => {
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
-
-    } else {
-
     }
-
   }
 
   ///EDITAR DOCUMENTOS//
