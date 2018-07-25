@@ -8,3 +8,9 @@
 .btn-social{
   width:50px;
 }
+
+.test:after {
+  content: '\2807';
+  font-size: 1em;
+  color: #2e2e2e
+}
