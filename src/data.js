@@ -12,15 +12,21 @@ firebase.initializeApp(config);
 let userProfile = {};
 
 function register(){
-
   console.log(name);
-  let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;
-  const promise = firebase.auth().
-  createUserWithEmailAndPassword(email, password)
-    .then(function (user){
-      let names = document.getElementById('name').value;
-      // return user.updateProfile({'displayName': names }); // verificar porque no lee
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const names = document.getElementById('name').value;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(function (result){
+      const user = {
+          uid: result.user.uid,
+          displayName: document.getElementById('name').value,
+          email: result.user.email,
+          photoURL: '',//urlavatar,
+          emailVerified: null,
+      }
+    guardaDatos(user)
     verificar();
 
   }).catch((error) => {
@@ -36,7 +42,14 @@ function ingreso() {
   let email2 = document.getElementById('email2').value;
   let password2 = document.getElementById('password2').value;
   firebase.auth().signInWithEmailAndPassword(email2, password2)
-  .then(()=>{
+  .then((result)=>{
+    // const user = {
+    //     uid: user.uid,
+    //     displayName: ,
+    //     email: user.email,
+    //     photoURL: ,
+    //     emailVerified:
+    // }
     alert('Usuario con login exitoso');
   })
   .catch((error) => {
@@ -61,8 +74,8 @@ function observador(){
     let isAnonymous = user.isAnonymous;
     let uid = user.uid;
     let providerData = user.providerData;
-    content.innerHTML = ` bienvenido ${user.displayName}`
-    guardaDatos(user)
+    content.innerHTML = ` bienvenido ${user.displayName || document.getElementById('name').value}`
+    // guardaDatos(user)
     // ...
   } else {
     // User is signed out.
@@ -73,25 +86,26 @@ function observador(){
 });
 }
 observador();
+
 // let contenido = document.getElementById('content');
 
-function aparece(user){
-  let user = user;
-  // let contenido = document.getElementById('content');
-  if (user.emailVerified) {
-    content.innerHTML = `
-    <div class="container mt-5">
-    <div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">Bienvenido! ${user.email}</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-    <hr>
-    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-    </div>
-    <button onclick="close()" class="btn btn-danger">Cerrar sesión</button>
-    </div>
-  `
-  }
-}
+// function aparece(user){
+//   let user = user;
+//   // let contenido = document.getElementById('content');
+//   if (user.emailVerified) {
+//     content.innerHTML = `
+//     <div class="container mt-5">
+//     <div class="alert alert-success" role="alert">
+//     <h4 class="alert-heading">Bienvenido! ${user.email}</h4>
+//     <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+//     <hr>
+//     <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+//     </div>
+//     <button onclick="close()" class="btn btn-danger">Cerrar sesión</button>
+//     </div>
+//   `
+//   }
+// }
 
 function close (){
   firebase.auth().signOut()
@@ -113,6 +127,7 @@ function verificar(){
 }
 
 let facebook = document.getElementById('facebook');
+let content = document.getElementById('content');
 
 facebook.addEventListener('click', () => {
   let provider = new firebase.auth.FacebookAuthProvider();
@@ -123,6 +138,7 @@ facebook.addEventListener('click', () => {
     .then((result) => {
       console.log(result);
       guardaDatos(result.user)
+      // content.innerHTML = ` <img src="${{result.user.photoURL}}" class="avatar">`
       $('#content').append("<img src='"+result.user.photoURL+ "'/>")
   }).catch((error)=> {
     console.log(error.code);
@@ -158,7 +174,7 @@ function guardaDatos(user){
     foto: user.photoURL,
     emailVerified: user.emailVerified
   }
-  firebase.database().ref('Users/' + user.uid)
+  firebase.database().ref('User/' + user.uid)
   .set(usuario)
 
   userProfile = getUserProfile(user); //json

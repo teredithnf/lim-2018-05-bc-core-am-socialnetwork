@@ -4,6 +4,8 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const email1 = document.getElementById('email2');
 const password1 = document.getElementById('password2');
+const name = document.getElementById('name');
+const lastName = document.getElementById('lastName');
 const register = document.getElementById('register');
 const ingreso = document.getElementById('ingreso');
 const closeSesion = document.getElementById('close');
@@ -11,6 +13,7 @@ const closeSesion = document.getElementById('close');
 
 register.addEventListener('click', () => {
   registerVal(email.value, password.value);
+
   if(email1.value.length === 0) {
     alert('ingrese un correo');
   }else if (password1.value.length <= 6) {
