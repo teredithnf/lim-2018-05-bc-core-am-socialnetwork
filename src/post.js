@@ -17,18 +17,18 @@ const listar = () =>{
                 <div><b>${post.data().userProfile.nombre}</b></div>
                 <div id="divPost${post.id}" style="height:100px; width:500px; background-color:#dee9f7" >${post.data().post}</div>
                 <textarea id="txtArea${post.id}" cols="60" rows="3" style="height:100px; width:500px; display:none" >${post.data().post}</textarea>
-                
+
                 <button id="btnEditar${post.id}" class="btn btn-warning btn-sm" onclick="editarPost('${post.id}', '${post.data().post}')" >Editar</button>
                 <button id="btnGuardar${post.id}" class="btn btn-warning btn-sm" onclick="guardarPost('${post.id}', '${post.data().post}')" style="display:none">Guardar</button>
-                <button id="btnEliminar${post.id}" class="btn btn-danger btn-sm" onclick="eliminarPost('${post.id}')">Eliminar</button>            
-                
+                <button id="btnEliminar${post.id}" class="btn btn-danger btn-sm" onclick="eliminarPost('${post.id}')">Eliminar</button>
+
                 <button type="button" class="btn btn-light" style="width:150px" onclick="countLikes('${post.id}')"><img class="w-80" src="../src/image/like.png"/>LIKE <b id="count${post.id}">0</b> </button>
               </div>
             </div>
           </div>`
 
       });
-  });    
+  });
 }
 
 const editarPost = (id, post) => {
@@ -58,7 +58,7 @@ const guardarPost = (id, post) => {
       }).catch((error)=> {
           console.error("Error updating document: ", error);
       });
-  } 
+  }
 
 }
 
@@ -70,8 +70,7 @@ const eliminarPost = (id) => {
       }).catch(function(error) {
           console.error("Error removing document: ", error);
       });
-
-  } 
+  }
 }
 
 const countLikes = (id) =>{

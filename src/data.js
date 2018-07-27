@@ -11,11 +11,12 @@ firebase.initializeApp(config);
 
 let userProfile = {};
 
-function register(){
-  console.log(name);
+const register = document.getElementById('register');
+
+
+register.addEventListener('click', ()=> {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  const names = document.getElementById('name').value;
 
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function (result){
@@ -36,20 +37,15 @@ function register(){
   console.log(errorCode);
   console.log(errorMessage);
   });
-}
+})
 
-function ingreso() {
+const ingreso = document.getElementById('ingreso');
+
+ingreso.addEventListener('click', ()=>{
   let email2 = document.getElementById('email2').value;
   let password2 = document.getElementById('password2').value;
   firebase.auth().signInWithEmailAndPassword(email2, password2)
   .then((result)=>{
-    // const user = {
-    //     uid: user.uid,
-    //     displayName: ,
-    //     email: user.email,
-    //     photoURL: ,
-    //     emailVerified:
-    // }
     alert('Usuario con login exitoso');
   })
   .catch((error) => {
@@ -59,7 +55,8 @@ function ingreso() {
   alert('Error en firebase >'+ errorCode);
   alert('Error en firebase >'+ errorMessage);
   });
-}
+})
+
 
 function observador(){
   firebase.auth().onAuthStateChanged((user) => {
@@ -107,7 +104,7 @@ observador();
 //   }
 // }
 
-function close (){
+const close = () => {
   firebase.auth().signOut()
   .then(()=>{
     console.log('Saliendo...');
