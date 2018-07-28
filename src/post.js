@@ -102,7 +102,7 @@ const eliminarPost = (id) => {
 
 const countLikes = (id, event) =>{
     event.preventDefault();
-  let count = parseInt(document.getElementById("count"+id).innerHTML);
+    let count = parseInt(document.getElementById("count"+id).innerHTML);
   document.getElementById("count"+id).innerHTML = count+1;
 }
 
