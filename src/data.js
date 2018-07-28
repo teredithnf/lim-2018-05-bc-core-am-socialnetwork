@@ -11,102 +11,74 @@ firebase.initializeApp(config);
 
 let userProfile = {};
 
-const register = document.getElementById('register');
+const guardaDatos = (user) => {
+  let usuario = {
+    uid: user.uid,
+    nombre: user.displayName,
+    email: user.email,
+    foto: user.photoURL,
+  }
+  firebase.database().ref('Users/' + user.uid)
+  .set(usuario)
+  userProfile = getUserProfile(user); //json
+}
 
-
-register.addEventListener('click', ()=> {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
+const registerVal = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(function (result){
+    .then((result) => {
+      alert('confirma tu correo electronico')
       const user = {
-          uid: result.user.uid,
-          displayName: document.getElementById('name').value,
-          email: result.user.email,
-          photoURL: '',//urlavatar,
-          emailVerified: null,
+        uid: result.user.uid,
+        displayName: document.getElementById('name').value,
+        email: result.user.email,
+        photoURL: 'http://subirimagen.me/uploads/20180725011911.png',
       }
-    guardaDatos(user)
-    verificar();
-
+      guardaDatos(user)
+      verificar();
   }).catch((error) => {
   // Handle Errors here.
-  let errorCode = error.code;
-  let errorMessage = error.message;
-  console.log(errorCode);
-  console.log(errorMessage);
-  });
-})
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+    });
+}
 
-const ingreso = document.getElementById('ingreso');
-
-ingreso.addEventListener('click', ()=>{
-  let email2 = document.getElementById('email2').value;
-  let password2 = document.getElementById('password2').value;
-  firebase.auth().signInWithEmailAndPassword(email2, password2)
-  .then((result)=>{
+const ingresoVal = (email, password) => {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then(()=>{
     alert('Usuario con login exitoso');
   })
   .catch((error) => {
-  // Handle Errors here.
   let errorCode = error.code;
   let errorMessage = error.message;
   alert('Error en firebase >'+ errorCode);
   alert('Error en firebase >'+ errorMessage);
   });
-})
-
-
-function observador(){
-  firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log('existe usuario');
-    // aparece();
-    // User is signed in.
-    let displayName = user.displayName;
-    let email = user.email;
-    let emailVerified = user.emailVerified;
-    let photoURL = user.photoURL;
-    let isAnonymous = user.isAnonymous;
-    let uid = user.uid;
-    let providerData = user.providerData;
-    content.innerHTML = ` bienvenido ${user.displayName || document.getElementById('name').value}`
-    // guardaDatos(user)
-    // ...
-  } else {
-    // User is signed out.
-    console.log('no existe usuario');
-    content.innerHTML = `
-  `
-  }
-});
-}
-observador();
+};
 
 const close = () => {
-  firebase.auth().signOut()
-  .then(()=>{
-    console.log('Saliendo...');
-  })
-  .catch(function(error){
-    console.log(error);
-  })
-}
+    firebase.auth().signOut()
+    .then(()=>{
+      alert('Saliendo...');
+      login.classList.remove("hiden");
+      register.classList.remove("hiden");
+      close.classList.add("hiden");
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
 
-function verificar(){
+const verificar = () => {
   let user = firebase.auth().currentUser;
   user.sendEmailVerification().then(function(){
-    console.log('enviando correo');
-  }).catch(function(error){
+    alert('enviando correo');
+  }).catch((error) => {
     console.log(error);
   })
 }
 
-let facebook = document.getElementById('facebook');
-let content = document.getElementById('content');
-
-facebook.addEventListener('click', () => {
+const facebookLogin = () => {
   let provider = new firebase.auth.FacebookAuthProvider();
   provider.setCustomParameters({
   'display': 'popup'
@@ -115,18 +87,16 @@ facebook.addEventListener('click', () => {
     .then((result) => {
       console.log(result);
       guardaDatos(result.user)
-      // content.innerHTML = ` <img src="${{result.user.photoURL}}" class="avatar">`
-      $('#content').append("<img class avatar src='"+result.user.photoURL+ "'/>")
+      // $('#content').append("<img src=${result.user.photoURL}/>")
   }).catch((error)=> {
     console.log(error.code);
     console.log(error.message);
     console.log(error.email);
     console.log(error.credential);
- });
-})
+});
+}
 
-let gmail = document.getElementById('gmail');
-gmail.addEventListener('click', ()=> {
+const gmailLogin = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
   .then((result)=> {
@@ -134,28 +104,14 @@ gmail.addEventListener('click', ()=> {
     var user = result.user;
     console.log(user)
     guardaDatos(result.user)
-    $('#content').append("<img src='"+result.user.photoURL+ "'/>")
+    // $('#content').append("<img src='"+result.user.photoURL+ "'/>")
   }).catch((error) => {
     console.log(error.code);
     console.log(error.message);
     console.log(error.email);
     console.log(error.credential);
 });
-})
-//funcion para guardar a los usuarios autenticados en la base de datos
-function guardaDatos(user){
-  let usuario = {
-    uid: user.uid,
-    nombre: user.displayName,
-    email: user.email,
-    foto: user.photoURL,
-    emailVerified: user.emailVerified
-  }
-  firebase.database().ref('User/' + user.uid)
-  .set(usuario)
-
-  userProfile = getUserProfile(user); //json
-}
+};
 
 const getUserProfile = (user) => {
   return {
@@ -163,4 +119,4 @@ const getUserProfile = (user) => {
     nombre: user.displayName,
     foto: user.photoURL
   };
-}
+};

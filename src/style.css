@@ -1,9 +1,6 @@
-/* #facebook, #gmail {
-   border-radius: 5px;
-   background: #ffffff;
-   cursor: pointer;
-   width: 80px;
-} */
+.hiden {
+  display: none;
+}
 
 .btn-social{
   width:50px;
