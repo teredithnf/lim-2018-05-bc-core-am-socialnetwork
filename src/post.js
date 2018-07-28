@@ -1,4 +1,3 @@
-
 // Initialize Cloud Firestore through Firebase
 var db = firebase.firestore();
 db.settings({timestampsInSnapshots: true});
@@ -53,8 +52,17 @@ const listar = () =>{
           `
           
 
+  const confirmado = confirm("Estas seguro de Editar la publicación");
+  if (confirmado == true) {
+      postReference.update({
+        post : postMessage
+      }).then(()=> {
+          console.log("Document successfully updated!");
+      }).catch((error)=> {
+          console.error("Error updating document: ", error);
       });
-  });    
+  }
+
 }
 
 const editarPost = (id, post) => {
