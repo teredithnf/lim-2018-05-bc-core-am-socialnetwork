@@ -11,3 +11,16 @@
   font-size: 1em;
   color: #2e2e2e
 }
+
+.divPublicaciones {
+  display: inline-block;
+}
+
+.publicar {
+  height: 100px;
+  width: 500px;
+}
+
+.post {
+  width: 500px;
+}

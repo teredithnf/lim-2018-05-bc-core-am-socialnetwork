@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
   </head>
@@ -97,15 +96,23 @@
       </a>
     </div>
 
-    <div id="divPostsArea" class="form-group col-6">
-        <div class="form-group col-9">
-           <h2><strong>Ideas para compartir</strong></h2>
-           <textarea cols="60" rows="5" id="txtAreaPost" placeholder="¿Que ideas tienes?"></textarea>
-           <button id= "btnPublicar" type="button" class="btn btn-primary" >Publicar</button>
+    <div class="container">
+        <br>
+        <div id="divPostsArea" class="pubicar">
+            <div class="row">
+              <h2><strong>Ideas para compartir</strong></h2>
+            </div>
+            <div class="row">
+              <textarea id="txtAreaPost" class="publicar" placeholder="¿Que ideas tienes?"></textarea>
+            </div>
+            <div class="row">
+              <button id= "btnPublicar" type="button" class="btn btn-primary" >Publicar</button>
+            </div>
         </div>
-   </div>
-
-    <div id="divPosts"></div>
+        <div id="divPosts" >
+        </div>
+    </div>
+        
 
     </div>
 
@@ -119,3 +126,4 @@
     <script src="post.js"></script>
   </body>
 </html>
+
