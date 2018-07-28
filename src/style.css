@@ -14,3 +14,7 @@
   font-size: 1em;
   color: #2e2e2e
 }
+
+.divPublicaciones {
+  display: inline-block;
+}

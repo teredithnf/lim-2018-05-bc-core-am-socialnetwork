@@ -22,7 +22,7 @@ window.onload = () => {
       let isAnonymous = user.isAnonymous;
       let uid = user.uid;
       let providerData = user.providerData;
-      content.innerHTML = `<p>Bienvenido  ${user.displayName}</p>`
+      content.innerHTML = `<p>Bienvenid@  ${user.displayName}</p>`
       guardaDatos(user)
     } else {
       console.log('no existe usuario');
