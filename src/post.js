@@ -19,9 +19,9 @@ const listar = () =>{
                           <div class="row">
                               <div class="col-md-11">
                                   <div class="media">
-                                    <div class="media-left">
+                                    <div class="media-left" style="max-width:100%;width:auto;height:auto;">
                                       <a href="#">
-                                        <img class="media-object photo-profile" src="">
+                                        <img class="media-object photo-profile" alt="fotoUsuario" style="width:40px; height:auto; border-radius:50px" src="${post.data().userProfile.foto}">
                                       </a>
                                     </div>
                                     <div class="media-body">
@@ -51,6 +51,7 @@ const listar = () =>{
           </div>
       </div>   
           `
+          
 
       });
   });    

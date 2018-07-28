@@ -166,13 +166,13 @@ const guardaDatos = (user) => {
   firebase.database().ref('angie/' + user.uid)
   .set(usuario)
 
-  // userProfile = getUserProfile(user); //json
+   userProfile = getUserProfile(user); //json
 }
 
-// const getUserProfile = (user) => {
-//   return {
-//     uid: user.uid,
-//     nombre: user.displayName,
-//     foto: user.photoURL
-//   };
-// };
+const getUserProfile = (user) => {
+  return {
+    uid: user.uid,
+    nombre: user.displayName,
+    foto: user.photoURL
+  };
+};
