@@ -84,26 +84,6 @@ function observador(){
 }
 observador();
 
-// let contenido = document.getElementById('content');
-
-// function aparece(user){
-//   let user = user;
-//   // let contenido = document.getElementById('content');
-//   if (user.emailVerified) {
-//     content.innerHTML = `
-//     <div class="container mt-5">
-//     <div class="alert alert-success" role="alert">
-//     <h4 class="alert-heading">Bienvenido! ${user.email}</h4>
-//     <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-//     <hr>
-//     <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-//     </div>
-//     <button onclick="close()" class="btn btn-danger">Cerrar sesión</button>
-//     </div>
-//   `
-//   }
-// }
-
 const close = () => {
   firebase.auth().signOut()
   .then(()=>{
@@ -136,7 +116,7 @@ facebook.addEventListener('click', () => {
       console.log(result);
       guardaDatos(result.user)
       // content.innerHTML = ` <img src="${{result.user.photoURL}}" class="avatar">`
-      $('#content').append("<img src='"+result.user.photoURL+ "'/>")
+      $('#content').append("<img class avatar src='"+result.user.photoURL+ "'/>")
   }).catch((error)=> {
     console.log(error.code);
     console.log(error.message);
