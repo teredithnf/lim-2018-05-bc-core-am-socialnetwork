@@ -36,40 +36,13 @@ window.onload = () => {
   });
 }
 
-const getId = (id) => {
-  return document.getElementById(id);
-}
-const validadorNombre = (name) => {
-    if ((/^([A-Za-z0-9\s]{8,})+$/g.test(name))) {
-        return true
-    } else {
-        return false
-    }
-}
-const validarorEmail = (email) => {
-    console.log(email);
-    if (/^([a-zA-Z0-9._-]{3,})+@([a-zA-Z0-9.-]{5,})+\.([a-zA-Z]{2,})+$/.test(email)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-const validatorPassword = (password) => {
-    console.log('validando contraseña', password);
-    if (/^([A-Za-z0-9]{8,})+$/g.test(password)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 register.addEventListener('click', () => {
-  if(validadorNombre(name.value)=== false) {
+  if(validadorNombre(name.value) === false) {
     alert('nombre incorrecto');
     console.log(123);
-  }else if (validarorEmail(email.value) === false) {
+  }else if (validadorEmail(email.value) === false) {
   alert('email incorrecta');
-} else if (validatorPassword(password.value) === false) {
+} else if (validadorPassword(password.value) === false) {
   alert('tiene que tener como minimo 6 caracteres y letras')
 }else {
     registerVal(email.value, password.value);
