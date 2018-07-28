@@ -1,3 +1,4 @@
+
 // Initialize Cloud Firestore through Firebase
 var db = firebase.firestore();
 db.settings({timestampsInSnapshots: true});
@@ -10,8 +11,8 @@ const listar = () =>{
     postSnapshot.forEach((post) => {
           console.log(`${post.id} => ${post.data().post}`);
 
-          divPosts.innerHTML += `<div class="container">
-          <div class="col-md-5 mt-5" >
+          divPosts.innerHTML += `<div class="posts">
+          <div class="col-md-6 mt-5" >
               <div class="card">
                   <div class="card-block">
                      <section class="post-heading">
@@ -31,14 +32,14 @@ const listar = () =>{
                           </div>             
                      </section>
                      <section class="post-body">
-                     <div id="divPost${post.id}">${post.data().post}</div>
+                     <div id="divPost${post.id}"  >${post.data().post}</div>
                      <textarea id="txtArea${post.id}" style="display:none; width:355px; heigth:30px">${post.data().post}</textarea>
                      </section>
                      <section class="post-footer">
                          <hr>
                          <div class="post-footer-option container">
                             
-                                  <a href="#"><i style="heigth:5px" id="clickLikes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}')"></i></a></li><b id="count${post.id}">0</b>                          
+                                  <a href="#"><i style="heigth:5px" id="clickLikes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>                          
                                   <button id="btnEditar${post.id}" type="button" class="btn btn-primary btn-sm" onClick="editarPost('${post.id}', '${post.data().post}')" >Editar</button>
                                   <button id="btnGuardar${post.id}" type="button" style="display:none" class="btn btn-primary btn-sm" onClick="guardarPost('${post.id}', '${post.data().post}')" >Guardar</button>
                                   <button id="btnEliminar${post.id}"type="button" class="btn btn-primary btn-sm" onClick="eliminarPost('${post.id}')">Eliminar</button>
@@ -52,17 +53,8 @@ const listar = () =>{
           `
           
 
-  const confirmado = confirm("Estas seguro de Editar la publicación");
-  if (confirmado == true) {
-      postReference.update({
-        post : postMessage
-      }).then(()=> {
-          console.log("Document successfully updated!");
-      }).catch((error)=> {
-          console.error("Error updating document: ", error);
       });
-  }
-
+  });    
 }
 
 const editarPost = (id, post) => {
@@ -108,7 +100,8 @@ const eliminarPost = (id) => {
   } 
 }
 
-const countLikes = (id) =>{
+const countLikes = (id, event) =>{
+    event.preventDefault();
   let count = parseInt(document.getElementById("count"+id).innerHTML);
   document.getElementById("count"+id).innerHTML = count+1;
 }
