@@ -120,3 +120,35 @@ const getUserProfile = (user) => {
     foto: user.photoURL
   };
 };
+
+const getId = (id) => {
+  return document.getElementById(id);
+}
+const validadorNombre = (name) => {
+    if ((/^([A-Za-z0-9\s]{8,})+$/g.test(name))) {
+        return true
+    } else {
+        return false
+    }
+}
+const validadorEmail = (email) => {
+    console.log(email);
+    if (/^([a-zA-Z0-9._-]{3,})+@([a-zA-Z0-9.-]{5,})+\.([a-zA-Z]{2,})+$/.test(email)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+const validadorPassword = (password) => {
+    console.log('validando contraseña', password);
+    if (/^([A-Za-z0-9]{8,})+$/g.test(password)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+window.validadorNombre = validadorNombre;
+window.validadorEmail = validadorEmail;
+window.validadorPassword = validadorPassword;
+window.validadorPassword = validadorPassword;
