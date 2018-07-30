@@ -17,6 +17,7 @@ const editar = document.getElementById('buttons');
 const divPosts1 = document.getElementById('divPosts1');
 const divPosts = document.getElementById('divPosts');
 const modal = document.getElementById('exampleModal');
+const divPostsArea = document.getElementById('divPostsArea');
 
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -24,6 +25,8 @@ window.onload = () => {
       console.log('existe usuario');
       if (user.emailVerified) {
         content.innerHTML = ` bienvenid@  ${user.displayName || document.getElementById('name').value} `;
+        content.innerHTML += `<button  type="button" class="btn btn-primary" >Publicar</button>`
+
         // content.innerHTML = ` <img src="${{user.photoURL}}" class="avatar">`;
         // ingreso.remove("hiden");
         // register.classList.remove("hiden");
@@ -33,22 +36,24 @@ window.onload = () => {
         closeSesion.classList.add('show');
         editar.classList.remove('show');
         editar.classList.add('hiden');
+        editar.classList.remove('show');
+        editar.classList.add('hiden');
         divPosts1.classList.remove('hiden');
         divPosts1.classList.add('show');
         divPosts.classList.remove('show');
         divPosts.classList.add('hiden');
+        divPostsArea.classList.remove('hiden');
+        divPostsArea.classList.add('show');
         listar(`${user.uid}`);
       }
-      // else {
-      //   ingreso.classList.add("hiden");
-      //   register.classList.add("hiden");
-      //   close.classList.remove("hiden");
-      // }
+
     } else {
       alert('no existe usuario');
-      // content.innerHTML = ``
-      // editar.classList.add('show');
-      // editar.classList.remove('hiden');
+      content.innerHTML = ``
+      closeSesion.classList.add('hiden');
+      closeSesion.classList.remove('show');
+      editar.classList.add('show');
+      editar.classList.remove('hiden');
       // divPosts1.classList.add('hiden');
       // divPosts1.classList.remove('show');
       // divPosts.classList.add('show');
@@ -87,12 +92,14 @@ closeSesion.addEventListener('click', () => {
   // ingreso.classList.add("hiden");
   // register.classList.add("hiden");
   // close.classList.remove("hiden");
-
+  closeSesion.classList.remove('show');
+  closeSesion.classList.add('hiden');
   editar.classList.add('show');
   editar.classList.remove('hiden');
   divPosts1.classList.remove('show');
   divPosts1.classList.add('hiden');
   divPosts.classList.remove('hiden');
   divPosts.classList.add('show');
+  
 
 })
