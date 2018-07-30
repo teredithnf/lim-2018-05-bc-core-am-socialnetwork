@@ -1,7 +1,9 @@
 .hiden {
   display: none;
 }
-
+.show{
+  display: block;
+}
 .btn-social{
   width:50px;
 }

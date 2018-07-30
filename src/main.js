@@ -13,6 +13,11 @@ const ingreso = document.getElementById('ingreso');
 
 const closeSesion = document.getElementById('close');
 
+const editar = document.getElementById('buttons');
+const divPosts1 = document.getElementById('divPosts1');
+const divPosts = document.getElementById('divPosts');
+const modal = document.getElementById('exampleModal');
+
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -23,6 +28,16 @@ window.onload = () => {
         // ingreso.remove("hiden");
         // register.classList.remove("hiden");
         // close.classList.add("hiden");
+        //editar.classList.add('visible');
+        closeSesion.classList.remove('hiden');
+        closeSesion.classList.add('show');
+        editar.classList.remove('show');
+        editar.classList.add('hiden');
+        divPosts1.classList.remove('hiden');
+        divPosts1.classList.add('show');
+        divPosts.classList.remove('show');
+        divPosts.classList.add('hiden');
+        listar(`${user.uid}`);
       }
       // else {
       //   ingreso.classList.add("hiden");
@@ -31,7 +46,13 @@ window.onload = () => {
       // }
     } else {
       alert('no existe usuario');
-      content.innerHTML = ``
+      // content.innerHTML = ``
+      // editar.classList.add('show');
+      // editar.classList.remove('hiden');
+      // divPosts1.classList.add('hiden');
+      // divPosts1.classList.remove('show');
+      // divPosts.classList.add('show');
+      // divPosts.classList.remove('hiden');
     }
   });
 }
@@ -39,12 +60,11 @@ window.onload = () => {
 register.addEventListener('click', () => {
   if(validadorNombre(name.value) === false) {
     alert('nombre incorrecto');
-    console.log(123);
-  }else if (validadorEmail(email.value) === false) {
-  alert('email incorrecta');
-} else if (validadorPassword(password.value) === false) {
-  alert('tiene que tener como minimo 6 caracteres y letras')
-}else {
+  } else if (validadorEmail(email.value) === false) {
+    alert('email incorrecta');
+  } else if (validadorPassword(password.value) === false) {
+    alert('tiene que tener como minimo 6 caracteres y letras')
+  } else {
     registerVal(email.value, password.value);
     alert('Has sido registrado exitosamente')
   }
@@ -67,4 +87,12 @@ closeSesion.addEventListener('click', () => {
   // ingreso.classList.add("hiden");
   // register.classList.add("hiden");
   // close.classList.remove("hiden");
+
+  editar.classList.add('show');
+  editar.classList.remove('hiden');
+  divPosts1.classList.remove('show');
+  divPosts1.classList.add('hiden');
+  divPosts.classList.remove('hiden');
+  divPosts.classList.add('show');
+
 })
