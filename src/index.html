@@ -16,10 +16,11 @@
       <div id="content"></div>
         <a class="navbar-brand">Ambientalist Lover</a>
         <div class="form-inline">
-          <button class="btn btn-outline-success my-2 my-sm-0 ml-2" class="hiden" data-toggle="modal" data-target="#exampleModal">Registrate</button>
-          <button class="btn btn-outline-success my-2 my-sm-0 ml-2" class="hiden" data-toggle="modal" data-target="#exampleModal1">Logueate</button>
-          <button id="close" class="btn btn-outline-success my-2 my-sm-0 ml-2" class="hiden" >Cerrar sesión</button>
-
+          <div class="show" id="buttons">
+            <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal">Registrate</button>
+            <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal1">Logueate</button>
+          </div>
+          <button id="close" class="btn btn-outline-success my-2 my-sm-0 ml-2" class="hiden">Cerrar sesión</button>
         </div>
       </nav>
     </div>
@@ -36,7 +37,7 @@
           </div>
           <div class="modal-body">
             <input type="text" id="email2" placeholder="Ingresa e-mail" class="form-control mr-sm-2">
-            <input type="password" id="password2" placeholder="Ingresa Contraseña" class="form-control mr-sm-2">
+            <input type="password" id="password2" placeholder="Ingresa Contraseña" class="form-control mr-sm-2 mt-3">
             <br>
             <p>--------- INGRESA CON:----------</p>
             <button type="button" class="btn btn-secondary btn-social ml-5" style="background-color: #F7FAF9" id="facebook"><img class="w-100" src="../src/image/facebook.png"/></button>
@@ -64,7 +65,6 @@
             <input type="text" id="name" placeholder="Nombre" class="form-control mr-sm-2 mt-2">
             <input type="text" id="email" placeholder="Ingresa e-mail" class="form-control mr-sm-2 mt-2">
             <input type="password" id="password" placeholder="Ingresa Contraseña" class="form-control mr-sm-2 mt-2">
-            <p>--------- Registrate con:----------</p>
           </div>
           <div class="modal-footer">
             <button id="register" type="button" class="btn btn-outline-success my-2 my-sm-0" data-dismiss="modal">Guardar</button>
@@ -96,27 +96,45 @@
       </a>
     </div>
 
-    <div class="container">
-        <div class="form-post">
-            <form action="">
-              <div class="form-group">
-                <label for="textAreaPost">
-                  <h3><b>Ideas para compartir</b></h3>
-                </label>
-                <textarea name="textAreaPost" id="textAreaPost" 
-                  class="form-control form-textArea-rounded form-textArea-post"
-                  placeholder="¿Que ideas tienes?" ></textarea>
-                <button id="btnPublicar" type="button" class="btn btn-primary form-btn">Publicar</button>
+    <div class="row">
+
+      <div  class="card col-3 d-none d-lg-block" style="width: 18rem;">
+        <div class="card-body">
+          <img class="card-img-top" src="../imagenes/noticia1.1.jpg" alt="Card image cap">
+          <p><h6>Energia Eolica</h6></p>
+          <p class="card-text">La energía eólica es la energía obtenida a partir del viento, es decir, la energía cinética generada por efecto de las corrientes de aire, y que es convertida en otras formas útiles de energía para las actividades humanas.</p>
+        </div>
+
+        <div class="card-body">
+        <img class="card-img-top" src="../imagenes/biomasa.jpg" alt="Card image cap">
+          <h6>Biomasa</h6>
+          <p class="card-text">Cantidad de productos obtenidos por fotosíntesis, susceptibles de ser transformados en combustible útil para el hombre y expresada en unidades de superficie y de volumen..</p>
+        </div>
+      </div>
+
+      <div class="container col-8">
+          <br>
+          <div id="divPostsArea" class="pubicar ml-5">
+              <div class="row">
+                <h2><strong>Ideas para compartir</strong></h2>
               </div>
-            </form>
-        </div>
+              <div class="row">
+                <textarea id="txtAreaPost" class="publicar" placeholder="¿Que ideas tienes?"></textarea>
+              </div>
+              <div class="row">
+                <button id= "btnPublicar" type="button" class="btn btn-primary" >Publicar</button>
+                <select class="ml-3">
+                  <option value="publico" id="publico">Público</option>
+                  <option value="privado" id="privado">Privado</option>
+                </select>
+              </div>
+          </div>
+          <div id="divPosts" class="show"></div>
 
-        <div id="divPosts" >
-        </div>
+          <div id="divPosts1" class="hiden" ></div>
+      </div>
     </div>
 
-
-    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

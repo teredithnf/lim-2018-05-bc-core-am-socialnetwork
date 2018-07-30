@@ -83,6 +83,7 @@ const facebookLogin = () => {
   provider.setCustomParameters({
   'display': 'popup'
   });
+
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
       console.log(result);
@@ -104,7 +105,7 @@ const gmailLogin = () => {
     var user = result.user;
     console.log(user)
     guardaDatos(result.user)
-    // $('#content').append("<img src='"+result.user.photoURL+ "'/>")
+    // $('#content').append("<img src=${{result.user.photoURL}}/>")
   }).catch((error) => {
     console.log(error.code);
     console.log(error.message);
@@ -132,7 +133,6 @@ const validadorNombre = (name) => {
     }
 }
 const validadorEmail = (email) => {
-    console.log(email);
     if (/^([a-zA-Z0-9._-]{3,})+@([a-zA-Z0-9.-]{5,})+\.([a-zA-Z]{2,})+$/.test(email)) {
         return true;
     } else {
@@ -140,7 +140,6 @@ const validadorEmail = (email) => {
     }
 }
 const validadorPassword = (password) => {
-    console.log('validando contraseña', password);
     if (/^([A-Za-z0-9]{8,})+$/g.test(password)) {
         return true;
     } else {
@@ -150,5 +149,4 @@ const validadorPassword = (password) => {
 
 window.validadorNombre = validadorNombre;
 window.validadorEmail = validadorEmail;
-window.validadorPassword = validadorPassword;
 window.validadorPassword = validadorPassword;
