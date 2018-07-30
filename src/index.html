@@ -97,18 +97,20 @@
     </div>
 
     <div class="container">
-        <br>
-        <div id="divPostsArea" class="pubicar">
-            <div class="row">
-              <h2><strong>Ideas para compartir</strong></h2>
-            </div>
-            <div class="row">
-              <textarea id="txtAreaPost" class="publicar" placeholder="¿Que ideas tienes?"></textarea>
-            </div>
-            <div class="row">
-              <button id= "btnPublicar" type="button" class="btn btn-primary" >Publicar</button>
-            </div>
+        <div class="form-post">
+            <form action="">
+              <div class="form-group">
+                <label for="textAreaPost">
+                  <h3><b>Ideas para compartir</b></h3>
+                </label>
+                <textarea name="textAreaPost" id="textAreaPost" 
+                  class="form-control form-textArea-rounded form-textArea-post"
+                  placeholder="¿Que ideas tienes?" ></textarea>
+                <button id="btnPublicar" type="button" class="btn btn-primary form-btn">Publicar</button>
+              </div>
+            </form>
         </div>
+
         <div id="divPosts" >
         </div>
     </div>

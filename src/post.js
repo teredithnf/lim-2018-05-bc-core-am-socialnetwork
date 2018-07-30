@@ -32,7 +32,7 @@ const listar = () =>{
                           </div>             
                      </section>
                      <section class="post-body">
-                     <div id="divPost${post.id}"  >${post.data().post}</div>
+                     <div id="divPost${post.id}" class="post-message" >${post.data().post}</div>
                      <textarea id="txtArea${post.id}" style="display:none; width:355px; heigth:30px">${post.data().post}</textarea>
                      </section>
                      <section class="post-footer">
