@@ -139,7 +139,7 @@ const listarSinRegistro = () => {
                          <hr>
                          <div class="post-footer-option container">
 
-                                  <a href="#"><i style="heigth:5px" id="clickLikes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
+                                  <a href="#"><i style="heigth:5px" id="clickLikesDes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
 
 
                          </div>
