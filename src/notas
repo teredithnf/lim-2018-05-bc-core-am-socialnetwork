@@ -24,4 +24,16 @@
          <button class="btn btn-primary" type="button">Editar</button>
                   <button class="btn btn-primary" type="button">Eliminar</button>
 
-                  
+postRef.transaction(function(post) {
+    if (post) {
+      if (post.stars && post.stars[uid]) {
+        post.starCount--;
+        post.stars[uid] = null;
+      } else {
+        post.starCount++;
+        if (!post.stars) {
+          post.stars = {};
+        }
+        post.stars[uid] = true;
+      }
+    }

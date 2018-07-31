@@ -208,6 +208,23 @@ const countLikes = (id, event) =>{
   document.getElementById("count"+id).innerHTML = count+1;
 }
 
+// postRef.transaction(function(post) {
+//     if (post) {
+//       if (post.stars && post.stars[uid]) {
+//         post.starCount--;
+//         post.stars[uid] = null;
+//       } else {
+//         post.starCount++;
+//         if (!post.stars) {
+//           post.stars = {};
+//         }
+//         post.stars[uid] = true;
+//       }
+//     }
+//     return post;
+//   });
+
+
 //GUARDAR POST
 const guardar  = () => {
     let post = document.getElementById("txtAreaPost").value;
