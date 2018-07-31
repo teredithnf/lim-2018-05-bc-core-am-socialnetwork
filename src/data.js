@@ -6,170 +6,113 @@ let config = {
   storageBucket: "socialnetwork-proyect.appspot.com",
   messagingSenderId: "1041163805568"
 };
+
 firebase.initializeApp(config);
 
 let userProfile = {};
 
-function register(){
-  let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(()=> {
-    verificar();
-  }).catch((error) => {
-  // Handle Errors here.
-  let errorCode = error.code;
-  let errorMessage = error.message;
-  console.log(errorCode);
-  console.log(errorMessage);
-  });
-}
-
-function ingreso() {
-  let email2 = document.getElementById('email2').value;
-  let password2 = document.getElementById('password2').value;
-  firebase.auth().signInWithEmailAndPassword(email2, password2)
-  .then(()=>{
-    alert('Usuario con login exitoso');
-  })
-  .catch((error) => {
-  // Handle Errors here.
-  let errorCode = error.code;
-  let errorMessage = error.message;
-  alert('Error en firebase >'+ errorCode);
-  alert('Error en firebase >'+ errorMessage);
-  });
-}
-
-function observador(){
-  firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log('existe usuario');
-    // aparece();
-    // User is signed in.
-    let displayName = user.displayName;
-    let email = user.email;
-    let emailVerified = user.emailVerified;
-    let photoURL = user.photoURL;
-    let isAnonymous = user.isAnonymous;
-    let uid = user.uid;
-    let providerData = user.providerData;
-    content.innerHTML = ` bienvenido ${user.displayName}`
-    guardaDatos(user)
-    // ...
-  } else {
-    // User is signed out.
-    console.log('no existe usuario');
-    content.innerHTML = `
-  `
-  }
-});
-}
-observador();
-// let contenido = document.getElementById('content');
-
-function aparece(user){
-  let user = user;
-  // let contenido = document.getElementById('content');
-  if (user.emailVerified) {
-    content.innerHTML = `
-    <div class="container mt-5">
-    <div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">Bienvenido! ${user.email}</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-    <hr>
-    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-    </div>
-    <button onclick="close()" class="btn btn-danger">Cerrar sesión</button>
-    </div>
-  `
-  }
-}
-
-function close (){
-  firebase.auth().signOut()
-  .then(()=>{
-    console.log('Saliendo...');
-  })
-  .catch(function(error){
-    console.log(error);
-  })
-}
-
-function verificar(){
-  let user = firebase.auth().currentUser;
-  user.sendEmailVerification().then(function(){
-    console.log('enviando correo');
-  }).catch(function(error){
-    console.log(error);
-  })
-}
-
-let facebook = document.getElementById('facebook');
-
-facebook.addEventListener('click', () => {
-  let provider = new firebase.auth.FacebookAuthProvider();
-  provider.setCustomParameters({
-  'display': 'popup'
-  });
-  firebase.auth().signInWithPopup(provider)
-    .then((result) => {
-      console.log(result);
-      guardaDatos(result.user)
-      $('#content').append("<img src='"+result.user.photoURL+ "'/>")
-  }).catch((error)=> {
-    console.log(error.code);
-    console.log(error.message);
-    console.log(error.email);
-    console.log(error.credential);
- });
-})
-// function facebook(){
-//   let provider = new firebase.auth.FacebookAuthProvider();
-//   provider.setCustomParameters({
-//   'display': 'popup'
-//   });
-//   firebase.auth().signInWithPopup(provider)
-//     .then((result) => {
-//       console.log('has iniciado sesion');
-//   }).catch((error)=> {
-//     console.log(error.code);
-//     console.log(error.message);
-//     console.log(error.email);
-//     console.log(error.credential);
-//  });
-// }
-
-let gmail = document.getElementById('gmail');
-gmail.addEventListener('click', ()=> {
-  let provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then((result)=> {
-    var token = result.credential.accessToken;
-    var user = result.user;
-    console.log(user)
-    guardaDatos(result.user)
-    $('#content').append("<img src='"+result.user.photoURL+ "'/>")
-  }).catch((error) => {
-    console.log(error.code);
-    console.log(error.message);
-    console.log(error.email);
-    console.log(error.credential);
-});
-})
-//funcion para guardar a los usuarios autenticados en la base de datos
-function guardaDatos(user){
+const guardaDatos = (user) => {
   let usuario = {
     uid: user.uid,
     nombre: user.displayName,
     email: user.email,
     foto: user.photoURL,
-    emailVerified: user.emailVerified
   }
-  firebase.database().ref('angie/' + user.uid)
+  firebase.database().ref('Users/' + user.uid)
   .set(usuario)
-
   userProfile = getUserProfile(user); //json
 }
+
+const registerVal = (email, password) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      alert('confirma tu correo electronico')
+      const user = {
+        uid: result.user.uid,
+        displayName: document.getElementById('name').value,
+        email: result.user.email,
+        photoURL: 'http://subirimagen.me/uploads/20180725011911.png',
+      }
+      guardaDatos(user)
+      verificar();
+  }).catch((error) => {
+  // Handle Errors here.
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+    });
+}
+
+const ingresoVal = (email, password) => {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then(()=>{
+    alert('Usuario con login exitoso');
+  })
+  .catch((error) => {
+  let errorCode = error.code;
+  let errorMessage = error.message;
+  alert('Error en firebase >'+ errorCode);
+  alert('Error en firebase >'+ errorMessage);
+  });
+};
+
+const close = () => {
+    firebase.auth().signOut()
+    .then(()=>{
+      alert('Saliendo...');
+      login.classList.remove("hiden");
+      register.classList.remove("hiden");
+      close.classList.add("hiden");
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+const verificar = () => {
+  let user = firebase.auth().currentUser;
+  user.sendEmailVerification().then(function(){
+    alert('enviando correo');
+  }).catch((error) => {
+    console.log(error);
+  })
+}
+
+const facebookLogin = () => {
+  let provider = new firebase.auth.FacebookAuthProvider();
+  provider.setCustomParameters({
+  'display': 'popup'
+  });
+
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+      console.log(result);
+      guardaDatos(result.user)
+      // $('#content').append("<img src=${result.user.photoURL}/>")
+  }).catch((error)=> {
+    console.log(error.code);
+    console.log(error.message);
+    console.log(error.email);
+    console.log(error.credential);
+});
+}
+
+const gmailLogin = () => {
+  let provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+  .then((result)=> {
+    var token = result.credential.accessToken;
+    var user = result.user;
+    console.log(user)
+    guardaDatos(result.user)
+    // $('#content').append("<img src=${{result.user.photoURL}}/>")
+  }).catch((error) => {
+    console.log(error.code);
+    console.log(error.message);
+    console.log(error.email);
+    console.log(error.credential);
+});
+};
 
 const getUserProfile = (user) => {
   return {
@@ -177,4 +120,33 @@ const getUserProfile = (user) => {
     nombre: user.displayName,
     foto: user.photoURL
   };
+};
+
+const getId = (id) => {
+  return document.getElementById(id);
 }
+const validadorNombre = (name) => {
+    if ((/^([A-Za-z0-9\s]{8,})+$/g.test(name))) {
+        return true
+    } else {
+        return false
+    }
+}
+const validadorEmail = (email) => {
+    if (/^([a-zA-Z0-9._-]{3,})+@([a-zA-Z0-9.-]{5,})+\.([a-zA-Z]{2,})+$/.test(email)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+const validadorPassword = (password) => {
+    if (/^([A-Za-z0-9]{8,})+$/g.test(password)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+window.validadorNombre = validadorNombre;
+window.validadorEmail = validadorEmail;
+window.validadorPassword = validadorPassword;

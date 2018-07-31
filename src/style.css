@@ -1,10 +1,9 @@
-/* #facebook, #gmail {
-   border-radius: 5px;
-   background: #ffffff;
-   cursor: pointer;
-   width: 80px;
-} */
-
+.hiden {
+  display: none;
+}
+.show{
+  display: block;
+}
 .btn-social{
   width:50px;
 }
@@ -13,4 +12,37 @@
   content: '\2807';
   font-size: 1em;
   color: #2e2e2e
+}
+
+.divPublicaciones {
+  display: inline-block;
+}
+
+.form-post {
+  margin-top: 50px;
+}
+
+.form-textArea-post {
+  height: 100px;
+  width: 500px;
+}
+
+.form-textArea-rounded {
+  border-radius: 1rem;
+}
+
+.form-btn {
+  margin-top: 10px;
+}
+
+.post {
+  width: 500px;
+}
+
+.post-message {
+  margin-left: 50px;
+}
+
+.botonesPublicar {
+  display: none;
 }
