@@ -115,24 +115,27 @@
 
       <div class="container col-8">
           <br>
-          <div id="divPostsArea" class="hiden">
-              <div class="row">
-                <h2><strong>Ideas para compartir</strong></h2>
-              </div>
-              <div class="row">
-                <textarea id="txtAreaPost" class="publicar" placeholder="¿Que ideas tienes?"></textarea>
-              </div>
-              <div class="row">
-                <button id= "btnPublicar" type="button" class="btn btn-primary" >Publicar</button>
-                <select class="ml-3">
-                  <option value="publico" id="publico">Público</option>
-                  <option value="privado" id="privado">Privado</option>
+          <div id="divPostsArea" class="form-post hiden">
+            <form action="">
+              <div class="form-group">
+                <label for="txtAreaPost">
+                  <h3><b>Ideas para compartir</b></h3>
+                </label>
+                <textarea name="txtAreaPost" id="txtAreaPost" 
+                  class="form-control form-textArea-rounded form-textArea-post"
+                  placeholder="¿Que ideas tienes?" ></textarea>
+                
+                <label for="sltPostType">Tipo de Post:</label>
+                <select id="sltPostType" class="form-control form-select">
+                  <option selected>Púlico</option>
+                  <option>Privado</option>
                 </select>
+
+                <button id="btnPublicar" type="button" class="btn btn-primary form-btn">Publicar</button>
               </div>
+            </form>
           </div>
           <div id="divPosts" class="show"></div>
-
-          <div id="divPosts1" class="hiden" ></div>
       </div>
     </div>
 
@@ -145,6 +148,5 @@
     <script src="data.js"></script>
     <script src="main.js"></script>
     <script src="post.js"></script>
-    <script src="muro.js"></script>
   </body>
 </html>

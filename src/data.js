@@ -64,6 +64,7 @@ const close = () => {
       login.classList.remove("hiden");
       register.classList.remove("hiden");
       close.classList.add("hiden");
+      content.innerHTML = '';
     }).catch((error) => {
       console.log(error);
     })
