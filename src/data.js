@@ -11,7 +11,8 @@ firebase.initializeApp(config);
 
 let userProfile = {};
 
-const guardaDatos = (user) => {
+const guardaDatos = (user, provider) => {
+  // alert(JSON.stringify(user, null, 2));
   let usuario = {
     uid: user.uid,
     nombre: user.displayName,
@@ -61,9 +62,10 @@ const close = () => {
     firebase.auth().signOut()
     .then(()=>{
       alert('Saliendo...');
-      login.classList.remove("hiden");
-      register.classList.remove("hiden");
-      close.classList.add("hiden");
+      content.innerHTML = '';
+      // login.classList.remove("hiden");
+      // register.classList.remove("hiden");
+      // close.classList.add("hiden");
     }).catch((error) => {
       console.log(error);
     })
@@ -83,13 +85,13 @@ const facebookLogin = () => {
   provider.setCustomParameters({
   'display': 'popup'
   });
-
+  // provider.addScope('email');
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
-      console.log(result);
-      guardaDatos(result.user)
-      // $('#content').append("<img src=${result.user.photoURL}/>")
+      const user = result.user;
+      guardaDatos(user);
   }).catch((error)=> {
+    alert('err'+error.message);
     console.log(error.code);
     console.log(error.message);
     console.log(error.email);
@@ -104,7 +106,7 @@ const gmailLogin = () => {
     var token = result.credential.accessToken;
     var user = result.user;
     console.log(user)
-    guardaDatos(result.user)
+    guardaDatos(user);
     // $('#content').append("<img src=${{result.user.photoURL}}/>")
   }).catch((error) => {
     console.log(error.code);
@@ -147,6 +149,8 @@ const validadorPassword = (password) => {
     }
 }
 
+
+// por defecto las variables definidas se agregarn al objeto global window no es necesario hace esto de abajo xd, queria hacerlo para los test
 window.validadorNombre = validadorNombre;
 window.validadorEmail = validadorEmail;
 window.validadorPassword = validadorPassword;

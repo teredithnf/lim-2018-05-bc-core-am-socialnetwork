@@ -11,10 +11,9 @@ const listar = (user) =>{
     divPosts1.innerHTML='';
 
     postSnapshot.forEach((post) => {
-          console.log(`${post.id} => ${post.data().post}`);
-          console.log(`${post.data().userProfile.uid}`);
-          console.log(user);
-
+          // console.log(`${post.id} => ${post.data().post}`);
+          // console.log(`${post.data().userProfile.uid}`);
+          // console.log(user);
         if(`${post.data().userProfile.uid}` == user){
 
             divPosts1.innerHTML += `<div class= "posts">
@@ -44,7 +43,7 @@ const listar = (user) =>{
                        <section class="post-footer">
                            <hr>
                            <div class="post-footer-option container">
-                                    <a href="#"><i style="heigth:5px" id="clickLikes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
+                                    <a href="#"><i style="heigth:5px" id="clickLikesDes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
                                     <button id="btnEditar${post.id}" type="button" class="btn btn-primary btn-sm" onClick="editarPost('${post.id}', '${post.data().post}')">Editar</button>
                                     <button id="btnGuardar${post.id}" type="button" class="btn btn-primary btn-sm hiden" onClick="guardarPost('${post.id}', '${post.data().post}')" >Guardar</button>
                                     <button id="btnEliminar${post.id}"type="button" class="btn btn-primary btn-sm" onClick="eliminarPost('${post.id}')">Eliminar</button>
@@ -83,7 +82,7 @@ const listar = (user) =>{
                        <section class="post-footer">
                            <hr>
                            <div class="post-footer-option container">
-                                    <a><i style="heigth:5px" id="clickLikes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
+                                    <a><i style="heigth:5px" id="clickLikes$${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
                                     <button id="btnEditar${post.id}" type="button" class="btn btn-primary btn-sm hiden" onClick="editarPost('${post.id}', '${post.data().post}')" >Editar</button>
                                     <button id="btnGuardar${post.id}" type="button" class="btn btn-primary btn-sm hiden" onClick="guardarPost('${post.id}', '${post.data().post}')" >Guardar</button>
                               <button id="btnEliminar${post.id}"type="button" class="btn btn-primary btn-sm hiden" onClick="eliminarPost('${post.id}')">Eliminar</button>
@@ -105,14 +104,14 @@ const listar = (user) =>{
 const listarSinRegistro = () => {
   //LEER DOCUMENTOS
   let divPosts = document.getElementById("divPosts");
-
   db.collection("posts").onSnapshot((postSnapshot) => {
     divPosts.innerHTML='';
     postSnapshot.forEach((post) => {
-          console.log(`${post.id} => ${post.data().post}`);
+          // console.log(`${post.id} => ${post.data().post}`);
 
-          divPosts.innerHTML += `<div class="posts">
-          <div class="col-md-6 mt-5" >
+          divPosts.innerHTML += `
+          <div class="posts">
+          <div class="col-md-6 mt-5">
               <div class="card">
                   <div class="card-block">
                      <section class="post-heading">
@@ -132,26 +131,23 @@ const listarSinRegistro = () => {
                           </div>
                      </section>
                      <section class="post-body">
-                     <div id="divPost${post.id}"  >${post.data().post}</div>
+                     <div id="divPost${post.id}">${post.data().post}</div>
                      <textarea id="txtAreaDes${post.id}" style="display:none; width:355px; heigth:30px">${post.data().post}</textarea>
                      </section>
                      <section class="post-footer">
                          <hr>
                          <div class="post-footer-option container">
-
-                                  <a href="#"><i style="heigth:5px" id="clickLikesDes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
-
-
+                            <a href="#"><i style="heigth:5px" id="clickLikesDes$${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}', event)"></i></a></li><b id="count${post.id}">0</b>
                          </div>
                      </section>
                   </div>
               </div>
           </div>
       </div>
+
           `
 
-
-      });
+      })
   });
 }
 // esto es de la linea 143
