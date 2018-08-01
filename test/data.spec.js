@@ -43,3 +43,5 @@ describe('validadorPassword(password)', () => {
 });
 
 });
+
+describe('post', () => {

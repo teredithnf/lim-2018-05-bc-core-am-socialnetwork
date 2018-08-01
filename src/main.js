@@ -103,14 +103,4 @@ facebook.addEventListener('click', () => {
 
 closeSesion.addEventListener('click', () => {
   close();
-
-  closeSesion.classList.remove('show');
-  closeSesion.classList.add('hiden');
-  editar.classList.add('show');
-  editar.classList.remove('hiden');
-  // divPosts1.classList.remove('show');
-  // divPosts1.classList.add('hiden');
-  // divPosts.classList.remove('hiden');
-  // divPosts.classList.add('show');
-
 })
