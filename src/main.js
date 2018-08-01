@@ -19,6 +19,8 @@ const divPosts = document.getElementById('divPosts');
 const modal = document.getElementById('exampleModal');
 const divPostsArea = document.getElementById('divPostsArea');
 
+let isUserAuthenticate = false;
+
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -38,13 +40,15 @@ window.onload = () => {
         editar.classList.add('hiden');
         editar.classList.remove('show');
         editar.classList.add('hiden');
-        divPosts1.classList.remove('hiden');
-        divPosts1.classList.add('show');
-        divPosts.classList.remove('show');
-        divPosts.classList.add('hiden');
+        // divPosts1.classList.remove('hiden');
+        // divPosts1.classList.add('show');
+        // divPosts.classList.remove('show');
+        // divPosts.classList.add('hiden');
         divPostsArea.classList.remove('hiden');
         divPostsArea.classList.add('show');
-        listar(`${user.uid}`);
+        //listar(`${user.uid}`);
+
+        isUserAuthenticate = true;
       }
 
     } else {
@@ -58,7 +62,9 @@ window.onload = () => {
       // divPosts1.classList.remove('show');
       // divPosts.classList.add('show');
       // divPosts.classList.remove('hiden');
+      isUserAuthenticate = false;
     }
+    listar()
   });
 }
 
@@ -96,10 +102,9 @@ closeSesion.addEventListener('click', () => {
   closeSesion.classList.add('hiden');
   editar.classList.add('show');
   editar.classList.remove('hiden');
-  divPosts1.classList.remove('show');
-  divPosts1.classList.add('hiden');
-  divPosts.classList.remove('hiden');
-  divPosts.classList.add('show');
+  // divPosts1.classList.remove('show');
+  // divPosts1.classList.add('hiden');
+  // divPosts.classList.remove('hiden');
+  // divPosts.classList.add('show');
   
-
 })
