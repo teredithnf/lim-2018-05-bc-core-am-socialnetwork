@@ -11,7 +11,10 @@ firebase.initializeApp(config);
 
 let userProfile = {};
 
+// const guardaDatos = (user, provider) => {
 const guardaDatos = (user) => {
+  console.log(guardaDatos);
+  // alert(JSON.stringify(user, null, 2));
   let usuario = {
     uid: user.uid,
     nombre: user.displayName,
@@ -23,6 +26,14 @@ const guardaDatos = (user) => {
   userProfile = getUserProfile(user); //json
 }
 
+const getUserProfile = (user) => {
+  return {
+    uid: user.uid,
+    nombre: user.displayName,
+    foto: user.photoURL
+  };
+};
+
 const registerVal = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
@@ -33,6 +44,7 @@ const registerVal = (email, password) => {
         email: result.user.email,
         photoURL: 'http://subirimagen.me/uploads/20180725011911.png',
       }
+      console.log(user);
       guardaDatos(user)
       verificar();
   }).catch((error) => {
@@ -61,10 +73,10 @@ const close = () => {
     firebase.auth().signOut()
     .then(()=>{
       alert('Saliendo...');
-      login.classList.remove("hiden");
-      register.classList.remove("hiden");
-      close.classList.add("hiden");
-      content.innerHTML = '';
+      // login.classList.remove("hiden");
+      // register.classList.remove("hiden");
+      // close.classList.add("hiden");
+      // content.innerHTML = '';
     }).catch((error) => {
       console.log(error);
     })
@@ -84,13 +96,13 @@ const facebookLogin = () => {
   provider.setCustomParameters({
   'display': 'popup'
   });
-
+  // provider.addScope('email');
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
-      console.log(result);
-      guardaDatos(result.user)
-      // $('#content').append("<img src=${result.user.photoURL}/>")
+      const user = result.user;
+      guardaDatos(user);
   }).catch((error)=> {
+    alert('err'+error.message);
     console.log(error.code);
     console.log(error.message);
     console.log(error.email);
@@ -105,7 +117,7 @@ const gmailLogin = () => {
     var token = result.credential.accessToken;
     var user = result.user;
     console.log(user)
-    guardaDatos(result.user)
+    guardaDatos(user);
     // $('#content').append("<img src=${{result.user.photoURL}}/>")
   }).catch((error) => {
     console.log(error.code);
@@ -113,14 +125,6 @@ const gmailLogin = () => {
     console.log(error.email);
     console.log(error.credential);
 });
-};
-
-const getUserProfile = (user) => {
-  return {
-    uid: user.uid,
-    nombre: user.displayName,
-    foto: user.photoURL
-  };
 };
 
 const getId = (id) => {
@@ -148,6 +152,8 @@ const validadorPassword = (password) => {
     }
 }
 
+
+// por defecto las variables definidas se agregarn al objeto global window no es necesario hace esto de abajo xd, queria hacerlo para los test
 window.validadorNombre = validadorNombre;
 window.validadorEmail = validadorEmail;
 window.validadorPassword = validadorPassword;

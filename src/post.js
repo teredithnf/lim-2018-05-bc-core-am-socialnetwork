@@ -3,26 +3,30 @@
 var db = firebase.firestore();
 db.settings({timestampsInSnapshots: true});
 
-const listar = () =>{
+const listar = () => {
   //LEER DOCUMENTOS
   let divPosts = document.getElementById("divPosts");
   db.collection("posts").onSnapshot((postSnapshot) => {
-    divPosts.innerHTML='';
+    divPosts.innerHTML = '';
     postSnapshot.forEach((post) => {
-          console.log(`${post.id} => ${post.data().post}`);
-
-          divPosts.innerHTML += `<div class="posts">
-          <div>
-              <div class="card mt-5">
-                  <div class="card-block">
-                     <section class="post-heading">
-                          <div class="row">
-                              <div class="col-md-11">
-                                  <div class="media">
-                                    <div class="media-left divPhoto">
-                                      <a href="#">
-                                        <img class="media-object photo-profile" alt="fotoUsuario" style="width:40px; height:auto; border-radius:50px" src="${post.data().userProfile.foto}">
-                                      </a>
+          // console.log(`${post.id} => ${post.data().post}`);
+          divPosts.innerHTML += `
+          <div class="posts">
+            <div>
+                <div class="card mt-5">
+                    <div class="card-block">
+                       <section class="post-heading">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="media">
+                                      <div class="media-left divPhoto">
+                                        <a href="#">
+                                          <img class="media-object photo-profile" alt="fotoUsuario" style="width:40px; height:auto; border-radius:50px" src="${post.data().userProfile.foto}">
+                                        </a>
+                                      </div>
+                                      <div class="media-body">
+                                        <a href="#" class="anchor-username"><h4 class="media-heading">${post.data().userProfile.nombre}</h4></a>
+                                      </div>
                                     </div>
                                     <div class="media-body">
                                       <a href="#" class="anchor-username"><h4 class="media-heading">${post.data().userProfile.nombre}</h4></a> 
@@ -54,11 +58,9 @@ const listar = () =>{
           </div>
       </div>   
           `
-          
-
       });
-  });    
-}
+  });
+};
 
 const editarPost = (id, post) => {
   document.getElementById("divPost"+id).style.display = "none";
@@ -87,7 +89,7 @@ const guardarPost = (id, post) => {
       }).catch((error)=> {
           console.error("Error updating document: ", error);
       });
-  } 
+  }
 
 }
 
@@ -99,9 +101,8 @@ const eliminarPost = (id) => {
       }).catch(function(error) {
           console.error("Error removing document: ", error);
       });
-
-  } 
-}
+  };
+};
 
 
 
@@ -154,4 +155,3 @@ const privado = (id, selected) => {
 
 const btnPublicar = document.getElementById("btnPublicar");
 btnPublicar.addEventListener("click", guardar);
-
