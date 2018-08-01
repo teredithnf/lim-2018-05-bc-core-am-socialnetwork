@@ -19,46 +19,53 @@ const divPosts = document.getElementById('divPosts');
 const modal = document.getElementById('exampleModal');
 const divPostsArea = document.getElementById('divPostsArea');
 
+let isUserAuthenticate = false;
+
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario');
       alert(user.displayName)
-
-      if (user.emailVerified) {
-        alert(user.displayName)
-        content.innerHTML = `bienvenid@  ${user.displayName || document.getElementById('name').value}`;
-        content.innerHTML += `<button type="button" class="btn btn-primary" >Publicar</button>`
-        // $('#content').append("<img src=${user.photoURL}/>")
-        // content.innerHTML = ` <img src="${{user.photoURL}}" class="avatar">`;
-
+      // if (user.emailVerified) {
+      let userUid = firebase.auth().currentUser.uid;
+      firebase.database().ref('/Users/' + userUid).on('value', (userRef) => {
+        let user = userRef.val();
+        console.log(user);
+        content.innerHTML = `bienvenid@  ${user.nombre}`;
         closeSesion.classList.remove('hiden');
         closeSesion.classList.add('show');
         editar.classList.remove('show');
         editar.classList.add('hiden');
         editar.classList.remove('show');
         editar.classList.add('hiden');
-        divPosts1.classList.remove('hiden');
-        divPosts1.classList.add('show');
-        divPosts.classList.remove('show');
-        divPosts.classList.add('hiden');
         divPostsArea.classList.remove('hiden');
         divPostsArea.classList.add('show');
-        listar(`${user.uid}`);
-      } else {
-        alert('hola mundo')
-      }
-    } else {
+        //listar(`${user.uid}`);
+
+        isUserAuthenticate = true;
+      });
+      console.log(userUid)
+      //   content.innerHTML += `<button type="button" class="btn btn-primary" >Publicar</button>`
+        // $('#content').append("<img src=${user.photoURL}/>")
+        // content.innerHTML = ` <img src="${{user.photoURL}}" class="avatar">`;
+
+        isUserAuthenticate = true;
+      // }
+    }
+     else {
       alert('no existe usuario');
-      content.innerHTML = ``
-      closeSesion.classList.add('hiden');
+      content.innerHTML = ``;
       closeSesion.classList.remove('show');
+      closeSesion.classList.add('hiden');
       editar.classList.add('show');
       editar.classList.remove('hiden');
 
+      isUserAuthenticate = false;
     }
-  });
+  })
+  listar()
 }
+
 
 register.addEventListener('click', () => {
   if(validadorNombre(name.value) === false) {
@@ -75,6 +82,13 @@ register.addEventListener('click', () => {
 
 ingreso.addEventListener('click', () => {
   ingresoVal(email1.value, password1.value);
+  // let useruid = firebase.auth().currentUser;
+  // console.log(useruid);
+  // firebase.database().ref('/Users/' + uid +)
+  // alert(user.displayName)
+  // content.innerHTML = `bienvenid@  ${user.displayName || document.getElementById('name').value}`;
+  // content.innerHTML += `<button type="button" class="btn btn-primary" >Publicar</button>`
+
 });
 
 gmail.addEventListener('click', () => {
@@ -92,10 +106,9 @@ closeSesion.addEventListener('click', () => {
   closeSesion.classList.add('hiden');
   editar.classList.add('show');
   editar.classList.remove('hiden');
-  divPosts1.classList.remove('show');
-  divPosts1.classList.add('hiden');
-  divPosts.classList.remove('hiden');
-  divPosts.classList.add('show');
-
+  // divPosts1.classList.remove('show');
+  // divPosts1.classList.add('hiden');
+  // divPosts.classList.remove('hiden');
+  // divPosts.classList.add('show');
 
 })

@@ -11,7 +11,9 @@ firebase.initializeApp(config);
 
 let userProfile = {};
 
-const guardaDatos = (user, provider) => {
+// const guardaDatos = (user, provider) => {
+const guardaDatos = (user) => {
+  console.log(guardaDatos);
   // alert(JSON.stringify(user, null, 2));
   let usuario = {
     uid: user.uid,
@@ -24,6 +26,14 @@ const guardaDatos = (user, provider) => {
   userProfile = getUserProfile(user); //json
 }
 
+const getUserProfile = (user) => {
+  return {
+    uid: user.uid,
+    nombre: user.displayName,
+    foto: user.photoURL
+  };
+};
+
 const registerVal = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
@@ -34,6 +44,7 @@ const registerVal = (email, password) => {
         email: result.user.email,
         photoURL: 'http://subirimagen.me/uploads/20180725011911.png',
       }
+      console.log(user);
       guardaDatos(user)
       verificar();
   }).catch((error) => {
@@ -62,10 +73,10 @@ const close = () => {
     firebase.auth().signOut()
     .then(()=>{
       alert('Saliendo...');
-      content.innerHTML = '';
       // login.classList.remove("hiden");
       // register.classList.remove("hiden");
       // close.classList.add("hiden");
+      // content.innerHTML = '';
     }).catch((error) => {
       console.log(error);
     })
@@ -114,14 +125,6 @@ const gmailLogin = () => {
     console.log(error.email);
     console.log(error.credential);
 });
-};
-
-const getUserProfile = (user) => {
-  return {
-    uid: user.uid,
-    nombre: user.displayName,
-    foto: user.photoURL
-  };
 };
 
 const getId = (id) => {
