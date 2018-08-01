@@ -59,6 +59,8 @@ window.onload = () => {
       closeSesion.classList.add('hiden');
       editar.classList.add('show');
       editar.classList.remove('hiden');
+      divPostsArea.classList.remove('show');
+      divPostsArea.classList.add('hiden');
 
       isUserAuthenticate = false;
     }
