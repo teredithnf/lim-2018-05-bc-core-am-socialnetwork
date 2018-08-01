@@ -25,7 +25,7 @@ window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario');
-      if (user.emailVerified) {
+//      if (user.emailVerified) {
         content.innerHTML = ` bienvenid@  ${user.displayName || document.getElementById('name').value} `;
         content.innerHTML += `<button  type="button" class="btn btn-primary" >Publicar</button>`
 
@@ -49,7 +49,7 @@ window.onload = () => {
         //listar(`${user.uid}`);
 
         isUserAuthenticate = true;
-      }
+//      }
 
     } else {
       alert('no existe usuario');
