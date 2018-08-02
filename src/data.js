@@ -11,8 +11,8 @@ firebase.initializeApp(config);
 
 let userProfile = {};
 
-// const guardaDatos = (user, provider) => {
-const guardaDatos = (user) => {
+const guardaDatos = (user, provider) => {
+// const guardaDatos = (user) => {
   console.log(guardaDatos);
   // alert(JSON.stringify(user, null, 2));
   let usuario = {
@@ -25,6 +25,17 @@ const guardaDatos = (user) => {
   .set(usuario)
   userProfile = getUserProfile(user); //json
 }
+
+// const guardaDatos = (user) => {
+//   let usuario = {
+//     uid: user.uid,
+//     nombre: user.displayName,
+//     email: user.email,
+//     foto: user.photoURL,
+//   };
+//   db.collection('').onSnapshot
+//
+// }
 
 const getUserProfile = (user) => {
   return {

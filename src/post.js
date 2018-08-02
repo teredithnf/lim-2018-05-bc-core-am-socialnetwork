@@ -28,12 +28,10 @@ const listar = () => {
                                         <a href="#" class="anchor-username"><h4 class="media-heading">${post.data().userProfile.nombre}</h4></a>
                                       </div>
                                     </div>
-                                    <div class="media-body">
-                                      <a href="#" class="anchor-username"><h4 class="media-heading">${post.data().userProfile.nombre}</h4></a> 
-                                    </div>
+
                                   </div>
                               </div>
-                          </div>             
+                          </div>
                      </section>
                      <section class="post-body">
                      <div id="divPost${post.id}" class="post-message" >${post.data().post}</div>
@@ -42,21 +40,20 @@ const listar = () => {
                      <section class="post-footer">
                          <hr>
                          <div class="post-footer-option container">
-                            
-                                  <a href="#"><i style="heigth:5px" id="clickLikes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}',${post.data().like}, event)"></i></a></li><b id="count${post.id}">${post.data().like}</b>                          
-                                  
+
+                                  <a href="#"><i style="heigth:5px" id="clickLikes${post.id}" class="fa fa-heart-o" onclick="countLikes('${post.id}',${post.data().like}, event)"></i></a></li><b id="count${post.id}">${post.data().like}</b>
+
                                   ${ (isUserAuthenticate &&  post.data().userProfile.uid === userProfile.uid )  ? `
                                   <button id="btnEditar${post.id}" type="button" class="btn btn-primary btn-sm" onClick="editarPost('${post.id}', '${post.data().post}')" >Editar</button>
                                   <button id="btnGuardar${post.id}" type="button" style="display:none" class="btn btn-primary btn-sm" onClick="guardarPost('${post.id}', '${post.data().post}')" >Guardar</button>
                                   <button id="btnEliminar${post.id}"type="button" class="btn btn-primary btn-sm" onClick="eliminarPost('${post.id}')">Eliminar</button>
                                   `: '' }
-                              
                          </div>
                      </section>
                   </div>
-              </div>   
+              </div>
           </div>
-      </div>   
+      </div>
           `
       });
   });
@@ -89,8 +86,7 @@ const guardarPost = (id, post) => {
       }).catch((error)=> {
           console.error("Error updating document: ", error);
       });
-  }
-
+  };
 }
 
 const eliminarPost = (id) => {
@@ -104,8 +100,6 @@ const eliminarPost = (id) => {
   };
 };
 
-
-
 const countLikes = (id, like, event) => {
     event.preventDefault();
     console.log(like)
@@ -114,7 +108,7 @@ const countLikes = (id, like, event) => {
         like: like +1
     });
     document.getElementById("count"+id).innerHTML = count+1;
-}
+};
 
 //GUARDAR POST
 const guardar  = () => {
@@ -130,19 +124,18 @@ const guardar  = () => {
         // timestampsInSnapshots:time,
         // tipe:{
         //     publico:true,
-        //     privado:false 
+        //     privado:false
         // }
-
       })
-      .then(function(docRef) {
+      .then((docRef) => {
           console.log("Document written with ID: ", docRef.id);
           document.getElementById("txtAreaPost").value = '';
-          
+
         })
         .catch(function(error) {
           console.error("Error adding document: ", error);
         });
-    }
+    };
 }
 
 // const publico = (id,selected) =>{

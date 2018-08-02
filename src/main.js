@@ -28,7 +28,7 @@ window.onload = () => {
       alert(user.displayName)
       // if (user.emailVerified) {
       let userUid = firebase.auth().currentUser.uid;
-      firebase.database().ref('/Users/' + userUid).on('value', (userRef) => {
+      firebase.database().ref('Users/' + userUid).on('value', (userRef) => {
         let user = userRef.val();
         console.log(user);
         content.innerHTML = `bienvenid@  ${user.nombre}`;
@@ -43,13 +43,8 @@ window.onload = () => {
         //listar(`${user.uid}`);
 
         isUserAuthenticate = true;
-      });
-      console.log(userUid)
-      //   content.innerHTML += `<button type="button" class="btn btn-primary" >Publicar</button>`
-        // $('#content').append("<img src=${user.photoURL}/>")
-        // content.innerHTML = ` <img src="${{user.photoURL}}" class="avatar">`;
+      });      console.log(userUid)
 
-        isUserAuthenticate = true;
       // }
     }
      else {
@@ -59,8 +54,8 @@ window.onload = () => {
       closeSesion.classList.add('hiden');
       editar.classList.add('show');
       editar.classList.remove('hiden');
-      divPostsArea.classList.remove('show');
-      divPostsArea.classList.add('hiden');
+      // divPostsArea.classList.remove('show');
+      // divPostsArea.classList.add('hiden');
 
       isUserAuthenticate = false;
     }
@@ -84,12 +79,6 @@ register.addEventListener('click', () => {
 
 ingreso.addEventListener('click', () => {
   ingresoVal(email1.value, password1.value);
-  // let useruid = firebase.auth().currentUser;
-  // console.log(useruid);
-  // firebase.database().ref('/Users/' + uid +)
-  // alert(user.displayName)
-  // content.innerHTML = `bienvenid@  ${user.displayName || document.getElementById('name').value}`;
-  // content.innerHTML += `<button type="button" class="btn btn-primary" >Publicar</button>`
 
 });
 

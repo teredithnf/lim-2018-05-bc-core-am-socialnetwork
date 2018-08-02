@@ -11,23 +11,23 @@
     <title>Ambientalist Lovers</title>
   </head>
   <body>
-
-    <div class="contenido">
-      <nav class="navbar navbar-light" style="background-color: #97E34B;">
-      <div id="content"></div>
-        <a class="navbar-brand">Ambientalist Lover</a>
-        <div class="form-inline">
-          <div class="show" id="buttons">
-            <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal">Registrate</button>
-            <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal1">Logueate</button>
+    <header>
+      <div class="contenido">
+        <nav class="navbar navbar-light" style="background-color: #97E34B;">
+        <div id="content"></div>
+          <a class="navbar-brand">Ambientalist Lover</a>
+          <div class="form-inline">
+            <div class="show" id="buttons">
+              <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal">Registrate</button>
+              <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal1">Logueate</button>
+            </div>
+            <button id="close" class="btn btn-outline-success my-2 my-sm-0 ml-2 hiden">Cerrar sesión</button>
           </div>
-          <button id="close" class="btn btn-outline-success my-2 my-sm-0 ml-2" class="hiden">Cerrar sesión</button>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
     </header>
 
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -57,7 +57,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Formulario de registro</h5>
+            <h5 class="modal-title">Formulario de registro</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -142,6 +142,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script> -->
+
     <script src="data.js"></script>
     <script src="main.js"></script>
     <script src="post.js"></script>
