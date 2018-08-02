@@ -5,7 +5,7 @@ db.settings({timestampsInSnapshots: true});
 const listar = () => {
   //LEER DOCUMENTOS
   let divPosts = document.getElementById("divPosts");
-  db.collection("posts").onSnapshot((postSnapshot) => {
+  db.collection("posts").where("type", "==", "Público").onSnapshot((postSnapshot) => {
     divPosts.innerHTML = '';
     postSnapshot.forEach((post) => {
           // console.log(`${post.id} => ${post.data().post}`);

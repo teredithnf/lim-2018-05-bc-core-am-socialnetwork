@@ -62,12 +62,11 @@ register.addEventListener('click', () => {
   } else {
     registerVal(email.value, password.value);
     alert('Has sido registrado exitosamente')
-  }
-})
+  };
+});
 
 ingreso.addEventListener('click', () => {
   ingresoVal(email1.value, password1.value);
-
 });
 
 gmail.addEventListener('click', () => {
