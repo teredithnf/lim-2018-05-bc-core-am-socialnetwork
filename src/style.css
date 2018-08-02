@@ -19,7 +19,7 @@
 }
 
 .form-post {
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .form-textArea-post {
@@ -29,6 +29,10 @@
 
 .form-textArea-rounded {
   border-radius: 1rem;
+}
+
+.form-select {
+  width: 500px;
 }
 
 .form-btn {
@@ -45,4 +49,10 @@
 
 .botonesPublicar {
   display: none;
+}
+.divPhoto {
+  max-width:100%;
+  width:auto;
+  height:auto;
+  margin-right: 10px;
 }

@@ -43,3 +43,30 @@ describe('validadorPassword(password)', () => {
 });
 
 });
+
+describe('post', () => {
+
+  it('debería exponer listar en objeto global', () => {
+    assert.isFunction(listar);
+  });
+
+  it('debería exponer editarPost en objeto global', () => {
+    assert.isFunction(editarPost);
+  });
+
+  it('debería exponer función guardarPost en objeto global', () => {
+    assert.isFunction(guardarPost);
+  });
+
+  it('debería exponer función eliminarPost en objeto global', () => {
+    assert.isFunction(eliminarPost);
+  });
+
+  it('deberia exponer funcion countLikes', () => {
+    assert.isFunction(countLikes);
+  });
+
+  it('deberia exponer funcion guardar ',() => {
+    assert.isFunction(guardar);
+  });
+})

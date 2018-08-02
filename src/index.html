@@ -69,7 +69,6 @@
           </div>
           <div class="modal-footer">
             <button id="register" type="button" class="btn btn-outline-success my-2 my-sm-0" data-dismiss="modal">Guardar</button>
-            <!-- <button onclick="register()" type="button" class="btn btn-primary">Guardar</button> -->
           </div>
         </div>
       </div>
@@ -113,30 +112,54 @@
         </div>
       </div>
 
+      
+
       <div class="container col-8">
           <br>
-          <div id="divPostsArea"class="publicar hiden ml-5">
-              <div class="row">
-                <h2><strong>Ideas para compartir</strong></h2>
-              </div>
-              <div class="row">
-                <textarea id="txtAreaPost" class="publicar" placeholder="¿Que ideas tienes?"></textarea>
-              </div>
-              <div class="row">
-                <button id= "btnPublicar" type="button" class="btn btn-primary" >Publicar</button>
-                <select class="ml-3">
-                  <option value="publico" id="publico">Público</option>
-                  <option value="privado" id="privado">Privado</option>
-                </select>
-              </div>
-          </div>
-          <div id="divPosts" class="show"></div>
+          <div id="divPostsArea" class="form-post hiden">
+            <form action="">
+              <div class="form-group">
+                <label for="txtAreaPost">
+                  <h3><b>Ideas para compartir</b></h3>
+                </label>
+                <textarea name="txtAreaPost" id="txtAreaPost"
+                  class="form-control form-textArea-rounded form-textArea-post"
+                  placeholder="¿Que ideas tienes?" ></textarea>
 
-          <div id="divPosts1" class="hiden" ></div>
+                <label for="sltPostType">Tipo de Post:</label>
+                <select id="sltPostType" class="form-control form-select">
+                  <option selected>Público</option>
+                  <option>Privado</option>
+                </select>
+
+                <button id="btnPublicar" type="button" class="btn btn-primary form-btn">Publicar</button>
+              </div>
+            </form>
+          </div>
+    
+          <!-- <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-sm-3">
+                    <div id="imaginary_container">
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" placeholder="Search"> <span class="input-group-addon">
+        
+                                <button type="submit">
+        
+                                    <span class="fa fa-search"></span>
+                            </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>         -->
+
+          <div id="divPosts" class="show">
+            
+          </div>
       </div>
     </div>
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -145,6 +168,5 @@
     <script src="data.js"></script>
     <script src="main.js"></script>
     <script src="post.js"></script>
-    <script src="muro.js"></script>
   </body>
 </html>
