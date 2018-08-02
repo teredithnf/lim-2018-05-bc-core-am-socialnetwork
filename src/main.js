@@ -18,6 +18,7 @@ const divPosts1 = document.getElementById('divPosts1');
 const divPosts = document.getElementById('divPosts');
 const modal = document.getElementById('exampleModal');
 const divPostsArea = document.getElementById('divPostsArea');
+const content = document.getElementById('content');
 
 let isUserAuthenticate = false;
 
@@ -25,7 +26,7 @@ window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario');
-      alert(user.displayName)
+      console.log(user.displayName)
       // if (user.emailVerified) {
       let userUid = firebase.auth().currentUser.uid;
       firebase.database().ref('/Users/' + userUid).on('value', (userRef) => {
@@ -36,12 +37,8 @@ window.onload = () => {
         closeSesion.classList.add('show');
         editar.classList.remove('show');
         editar.classList.add('hiden');
-        editar.classList.remove('show');
-        editar.classList.add('hiden');
-        divPostsArea.classList.remove('hiden');
-        divPostsArea.classList.add('show');
-        //listar(`${user.uid}`);
 
+        divPostsArea.style.display = "block";
         isUserAuthenticate = true;
       });
       console.log(userUid)
@@ -53,7 +50,7 @@ window.onload = () => {
       // }
     }
      else {
-      alert('no existe usuario');
+      console.log('no existe usuario');
       content.innerHTML = ``;
       closeSesion.classList.remove('show');
       closeSesion.classList.add('hiden');
@@ -62,8 +59,8 @@ window.onload = () => {
 
       isUserAuthenticate = false;
     }
+    listar()
   })
-  listar()
 }
 
 
@@ -106,9 +103,7 @@ closeSesion.addEventListener('click', () => {
   closeSesion.classList.add('hiden');
   editar.classList.add('show');
   editar.classList.remove('hiden');
-  // divPosts1.classList.remove('show');
-  // divPosts1.classList.add('hiden');
-  // divPosts.classList.remove('hiden');
-  // divPosts.classList.add('show');
+
+  divPostsArea.style.display = "none";
 
 })

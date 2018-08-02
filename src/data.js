@@ -13,7 +13,7 @@ let userProfile = {};
 
 // const guardaDatos = (user, provider) => {
 const guardaDatos = (user) => {
-  console.log(guardaDatos);
+  //console.log(guardaDatos);
   // alert(JSON.stringify(user, null, 2));
   let usuario = {
     uid: user.uid,
@@ -73,10 +73,6 @@ const close = () => {
     firebase.auth().signOut()
     .then(()=>{
       alert('Saliendo...');
-      // login.classList.remove("hiden");
-      // register.classList.remove("hiden");
-      // close.classList.add("hiden");
-      // content.innerHTML = '';
     }).catch((error) => {
       console.log(error);
     })

@@ -28,9 +28,6 @@ const listar = () => {
                                         <a href="#" class="anchor-username"><h4 class="media-heading">${post.data().userProfile.nombre}</h4></a>
                                       </div>
                                     </div>
-                                    <div class="media-body">
-                                      <a href="#" class="anchor-username"><h4 class="media-heading">${post.data().userProfile.nombre}</h4></a> 
-                                    </div>
                                   </div>
                               </div>
                           </div>             
@@ -108,12 +105,11 @@ const eliminarPost = (id) => {
 
 const countLikes = (id, like, event) => {
     event.preventDefault();
-    console.log(like)
-    let count = parseInt(document.getElementById("count"+id).innerHTML);
+    let likeUpdate = like + 1;
     firebase.firestore().collection('posts').doc(id).update({
-        like: like +1
+        like: likeUpdate
     });
-    document.getElementById("count"+id).innerHTML = count+1;
+    document.getElementById("count"+id).innerHTML = likeUpdate;
 }
 
 //GUARDAR POST
@@ -127,12 +123,7 @@ const guardar  = () => {
         post: post,
         userProfile: userProfile,
         like: 0,
-        // timestampsInSnapshots:time,
-        // tipe:{
-        //     publico:true,
-        //     privado:false 
-        // }
-
+        type: document.getElementById('sltPostType').value
       })
       .then(function(docRef) {
           console.log("Document written with ID: ", docRef.id);
@@ -155,3 +146,25 @@ const privado = (id, selected) => {
 
 const btnPublicar = document.getElementById("btnPublicar");
 btnPublicar.addEventListener("click", guardar);
+
+
+// creando funcion filtrarpost 
+// const filtrarPost = (posts) => {
+//     let filPost = post;
+//     if(search !== null){
+//         filPost= post.filter((pub)=>{
+//             return user.name.toUpperCase().indexOf(search.toUpperCase()) > -1;
+//         });
+//     }
+//     return postFilters;
+// }
+
+// window.filterUsers = (users, search) => {
+//     let usersFilter = users;
+//     if(search !== null){
+//         usersFilter = users.filter((user)=>{
+//             return user.name.toUpperCase().indexOf(search.toUpperCase()) > -1;
+//         });
+//     }
+//     return usersFilter;
+// }
