@@ -136,35 +136,9 @@ const guardar  = () => {
     }
 }
 
-// const publico = (id,selected) =>{
-
-// }
-
 const privado = (id, selected) => {
 
 }
 
 const btnPublicar = document.getElementById("btnPublicar");
 btnPublicar.addEventListener("click", guardar);
-
-
-// creando funcion filtrarpost 
-// const filtrarPost = (posts) => {
-//     let filPost = post;
-//     if(search !== null){
-//         filPost= post.filter((pub)=>{
-//             return user.name.toUpperCase().indexOf(search.toUpperCase()) > -1;
-//         });
-//     }
-//     return postFilters;
-// }
-
-// window.filterUsers = (users, search) => {
-//     let usersFilter = users;
-//     if(search !== null){
-//         usersFilter = users.filter((user)=>{
-//             return user.name.toUpperCase().indexOf(search.toUpperCase()) > -1;
-//         });
-//     }
-//     return usersFilter;
-// }

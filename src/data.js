@@ -11,10 +11,8 @@ firebase.initializeApp(config);
 
 let userProfile = {};
 
-// const guardaDatos = (user, provider) => {
+
 const guardaDatos = (user) => {
-  //console.log(guardaDatos);
-  // alert(JSON.stringify(user, null, 2));
   let usuario = {
     uid: user.uid,
     nombre: user.displayName,
@@ -48,7 +46,6 @@ const registerVal = (email, password) => {
       guardaDatos(user)
       verificar();
   }).catch((error) => {
-  // Handle Errors here.
     let errorCode = error.code;
     let errorMessage = error.message;
     console.log(errorCode);

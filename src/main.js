@@ -25,13 +25,10 @@ let isUserAuthenticate = false;
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      console.log('existe usuario');
-      console.log(user.displayName)
       // if (user.emailVerified) {
       let userUid = firebase.auth().currentUser.uid;
       firebase.database().ref('/Users/' + userUid).on('value', (userRef) => {
         let user = userRef.val();
-        console.log(user);
         content.innerHTML = `bienvenid@  ${user.nombre}`;
         closeSesion.classList.remove('hiden');
         closeSesion.classList.add('show');
@@ -41,16 +38,9 @@ window.onload = () => {
         divPostsArea.style.display = "block";
         isUserAuthenticate = true;
       });
-      console.log(userUid)
-      //   content.innerHTML += `<button type="button" class="btn btn-primary" >Publicar</button>`
-        // $('#content').append("<img src=${user.photoURL}/>")
-        // content.innerHTML = ` <img src="${{user.photoURL}}" class="avatar">`;
-
         isUserAuthenticate = true;
-      // }
     }
      else {
-      console.log('no existe usuario');
       content.innerHTML = ``;
       closeSesion.classList.remove('show');
       closeSesion.classList.add('hiden');
