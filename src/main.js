@@ -13,65 +13,65 @@ const ingreso = document.getElementById('ingreso');
 
 const closeSesion = document.getElementById('close');
 
+const editar = document.getElementById('buttons');
+const divPosts1 = document.getElementById('divPosts1');
+const divPosts = document.getElementById('divPosts');
+const modal = document.getElementById('exampleModal');
+const divPostsArea = document.getElementById('divPostsArea');
+
+let isUserAuthenticate = false;
+
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario');
-      if (user.emailVerified) {
-        content.innerHTML = ` bienvenid@  ${user.displayName || document.getElementById('name').value} `;
-        // content.innerHTML = ` <img src="${{user.photoURL}}" class="avatar">`;
-        // ingreso.remove("hiden");
-        // register.classList.remove("hiden");
-        // close.classList.add("hiden");
-      }
-      // else {
-      //   ingreso.classList.add("hiden");
-      //   register.classList.add("hiden");
-      //   close.classList.remove("hiden");
+      alert(user.displayName)
+      // if (user.emailVerified) {
+      let userUid = firebase.auth().currentUser.uid;
+      firebase.database().ref('Users/' + userUid).on('value', (userRef) => {
+        let user = userRef.val();
+        console.log(user);
+        content.innerHTML = `bienvenid@  ${user.nombre}`;
+        closeSesion.classList.remove('hiden');
+        closeSesion.classList.add('show');
+        editar.classList.remove('show');
+        editar.classList.add('hiden');
+        editar.classList.remove('show');
+        editar.classList.add('hiden');
+        divPostsArea.classList.remove('hiden');
+        divPostsArea.classList.add('show');
+        //listar(`${user.uid}`);
+
+        isUserAuthenticate = true;
+      });      console.log(userUid)
+
       // }
-    } else {
-      alert('no existe usuario');
-      content.innerHTML = ``
     }
-  });
+     else {
+      alert('no existe usuario');
+      content.innerHTML = ``;
+      closeSesion.classList.remove('show');
+      closeSesion.classList.add('hiden');
+      editar.classList.add('show');
+      editar.classList.remove('hiden');
+      // divPostsArea.classList.remove('show');
+      // divPostsArea.classList.add('hiden');
+
+      isUserAuthenticate = false;
+    }
+  })
+  listar()
 }
 
-const getId = (id) => {
-  return document.getElementById(id);
-}
-const validadorNombre = (name) => {
-    if ((/^([A-Za-z0-9\s]{8,})+$/g.test(name))) {
-        return true
-    } else {
-        return false
-    }
-}
-const validarorEmail = (email) => {
-    console.log(email);
-    if (/^([a-zA-Z0-9._-]{3,})+@([a-zA-Z0-9.-]{5,})+\.([a-zA-Z]{2,})+$/.test(email)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-const validatorPassword = (password) => {
-    console.log('validando contraseña', password);
-    if (/^([A-Za-z0-9]{8,})+$/g.test(password)) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 register.addEventListener('click', () => {
-  if(validadorNombre(name.value)=== false) {
+  if(validadorNombre(name.value) === false) {
     alert('nombre incorrecto');
-    console.log(123);
-  }else if (validarorEmail(email.value) === false) {
-  alert('email incorrecta');
-} else if (validatorPassword(password.value) === false) {
-  alert('tiene que tener como minimo 6 caracteres y letras')
-}else {
+  } else if (validadorEmail(email.value) === false) {
+    alert('email incorrecta');
+  } else if (validadorPassword(password.value) === false) {
+    alert('tiene que tener como minimo 6 caracteres y letras')
+  } else {
     registerVal(email.value, password.value);
     alert('Has sido registrado exitosamente')
   }
@@ -79,6 +79,7 @@ register.addEventListener('click', () => {
 
 ingreso.addEventListener('click', () => {
   ingresoVal(email1.value, password1.value);
+
 });
 
 gmail.addEventListener('click', () => {
@@ -91,7 +92,4 @@ facebook.addEventListener('click', () => {
 
 closeSesion.addEventListener('click', () => {
   close();
-  // ingreso.classList.add("hiden");
-  // register.classList.add("hiden");
-  // close.classList.remove("hiden");
 })
