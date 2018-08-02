@@ -1,4 +1,3 @@
-
 // Initialize Cloud Firestore through Firebase
 var db = firebase.firestore();
 db.settings({timestampsInSnapshots: true});
@@ -112,24 +111,28 @@ const countLikes = (id, like, event) => {
 
 //GUARDAR POST
 const guardar  = () => {
+  console.log(userProfile);
+   //json
     let post = document.getElementById("txtAreaPost").value;
     if(post.trim().length === 0){
       alert('Debe ingresar un mensaje');
       return;
     }else{
+
       db.collection("posts").add({
         post: post,
         userProfile: userProfile,
         like: 0,
-        // timestampsInSnapshots:time,
-        // tipe:{
-        //     publico:true,
-        //     privado:false
-        // }
+        type: document.getElementById('sltPostType').value
       })
       .then((docRef) => {
+        document.getElementById("txtAreaPost").value = '';
+        setTimeout(()=>{
           console.log("Document written with ID: ", docRef.id);
-          document.getElementById("txtAreaPost").value = '';
+        },2000)
+
+
+          console.log(docRef);
 
         })
         .catch(function(error) {
@@ -137,10 +140,6 @@ const guardar  = () => {
         });
     };
 }
-
-// const publico = (id,selected) =>{
-
-// }
 
 const privado = (id, selected) => {
 

@@ -20,16 +20,18 @@ const modal = document.getElementById('exampleModal');
 const divPostsArea = document.getElementById('divPostsArea');
 
 let isUserAuthenticate = false;
+let userProfile = {};
 
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario');
-      alert(user.displayName)
+
       // if (user.emailVerified) {
       let userUid = firebase.auth().currentUser.uid;
       firebase.database().ref('Users/' + userUid).on('value', (userRef) => {
         let user = userRef.val();
+        userProfile = user;
         console.log(user);
         content.innerHTML = `bienvenid@  ${user.nombre}`;
         closeSesion.classList.remove('hiden');
@@ -41,26 +43,12 @@ window.onload = () => {
         divPostsArea.classList.remove('hiden');
         divPostsArea.classList.add('show');
         //listar(`${user.uid}`);
-
         isUserAuthenticate = true;
-      });      console.log(userUid)
-
-      // }
+      });
+      console.log(userUid);
     }
-     else {
-      alert('no existe usuario');
-      content.innerHTML = ``;
-      closeSesion.classList.remove('show');
-      closeSesion.classList.add('hiden');
-      editar.classList.add('show');
-      editar.classList.remove('hiden');
-      // divPostsArea.classList.remove('show');
-      // divPostsArea.classList.add('hiden');
-
-      isUserAuthenticate = false;
-    }
-  })
-  listar()
+  });
+  listar();
 }
 
 
@@ -92,4 +80,5 @@ facebook.addEventListener('click', () => {
 
 closeSesion.addEventListener('click', () => {
   close();
-})
+  location.reload();
+});

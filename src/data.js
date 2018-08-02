@@ -9,7 +9,9 @@ let config = {
 
 firebase.initializeApp(config);
 
-let userProfile = {};
+var db = firebase.firestore();
+
+
 
 const guardaDatos = (user, provider) => {
 // const guardaDatos = (user) => {
@@ -23,26 +25,7 @@ const guardaDatos = (user, provider) => {
   }
   firebase.database().ref('Users/' + user.uid)
   .set(usuario)
-  userProfile = getUserProfile(user); //json
-}
 
-// const guardaDatos = (user) => {
-//   let usuario = {
-//     uid: user.uid,
-//     nombre: user.displayName,
-//     email: user.email,
-//     foto: user.photoURL,
-//   };
-//   db.collection('').onSnapshot
-//
-// }
-
-const getUserProfile = (user) => {
-  return {
-    uid: user.uid,
-    nombre: user.displayName,
-    foto: user.photoURL
-  };
 };
 
 const registerVal = (email, password) => {
@@ -65,7 +48,7 @@ const registerVal = (email, password) => {
     console.log(errorCode);
     console.log(errorMessage);
     });
-}
+};
 
 const ingresoVal = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -84,14 +67,10 @@ const close = () => {
     firebase.auth().signOut()
     .then(()=>{
       alert('Saliendo...');
-      // login.classList.remove("hiden");
-      // register.classList.remove("hiden");
-      // close.classList.add("hiden");
-      // content.innerHTML = '';
     }).catch((error) => {
       console.log(error);
-    })
-  }
+    });
+  };
 
 const verificar = () => {
   let user = firebase.auth().currentUser;
@@ -99,15 +78,14 @@ const verificar = () => {
     alert('enviando correo');
   }).catch((error) => {
     console.log(error);
-  })
-}
+  });
+};
 
 const facebookLogin = () => {
   let provider = new firebase.auth.FacebookAuthProvider();
   provider.setCustomParameters({
   'display': 'popup'
   });
-  // provider.addScope('email');
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
       const user = result.user;
@@ -119,7 +97,7 @@ const facebookLogin = () => {
     console.log(error.email);
     console.log(error.credential);
 });
-}
+};
 
 const gmailLogin = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
@@ -129,7 +107,6 @@ const gmailLogin = () => {
     var user = result.user;
     console.log(user)
     guardaDatos(user);
-    // $('#content').append("<img src=${{result.user.photoURL}}/>")
   }).catch((error) => {
     console.log(error.code);
     console.log(error.message);
@@ -146,25 +123,23 @@ const validadorNombre = (name) => {
         return true
     } else {
         return false
-    }
-}
+    };
+};
 const validadorEmail = (email) => {
     if (/^([a-zA-Z0-9._-]{3,})+@([a-zA-Z0-9.-]{5,})+\.([a-zA-Z]{2,})+$/.test(email)) {
         return true;
     } else {
         return false;
-    }
-}
+    };
+};
 const validadorPassword = (password) => {
     if (/^([A-Za-z0-9]{8,})+$/g.test(password)) {
         return true;
     } else {
         return false;
-    }
-}
+    };
+};
 
-
-// por defecto las variables definidas se agregarn al objeto global window no es necesario hace esto de abajo xd, queria hacerlo para los test
 window.validadorNombre = validadorNombre;
 window.validadorEmail = validadorEmail;
 window.validadorPassword = validadorPassword;
