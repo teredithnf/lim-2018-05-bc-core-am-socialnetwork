@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="../src/image/energias-alternativas.jpg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -11,27 +11,28 @@
     <title>Ambientalist Lovers</title>
   </head>
   <body>
-
-    <div class="contenido">
-      <nav class="navbar navbar-light" style="background-color: #97E34B;">
-      <div id="content"></div>
-        <a class="navbar-brand">Ambientalist Lover</a>
-        <div class="form-inline">
-          <div class="show" id="buttons">
-            <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal">Registrate</button>
-            <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal1">Logueate</button>
+    <!-- <div> -->
+    <header>
+      <div class="contenido">
+        <nav class="navbar navbar-light" style="background-color: #97E34B;">
+        <div id="content"></div>
+          <a class="navbar-brand">Ambientalist Lover</a>
+          <div class="form-inline">
+            <div class="show" id="buttons">
+              <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal">Registrate</button>
+              <button class="btn btn-outline-success my-2 my-sm-0 ml-2" data-toggle="modal" data-target="#exampleModal1">Logueate</button>
+            </div>
+            <button id="close" class="btn btn-outline-success my-2 my-sm-0 ml-2 hiden">Cerrar sesión</button>
           </div>
-          <button id="close" class="btn btn-outline-success my-2 my-sm-0 ml-2" class="hiden">Cerrar sesión</button>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
     </header>
 
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Formulario de ingreso</h5>
+            <h5 class="modal-title">Formulario de ingreso</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -41,8 +42,8 @@
             <input type="password" id="password2" placeholder="Ingresa Contraseña" class="form-control mr-sm-2 mt-3">
             <br>
             <p>--------- INGRESA CON:----------</p>
-            <button type="button" class="btn btn-secondary btn-social ml-5" style="background-color: #F7FAF9" id="facebook"><img class="w-100" src="../src/image/facebook.png"/></button>
-            <button type="button" class="btn btn-secondary btn-social ml-5" style="background-color: #F7FAF9" id="gmail"><img class="w-100" src="../src/image/gmail.png"/></button>
+            <button type="button" class="btn btn-secondary btn-social ml-5" style="background-color: #F7FAF9" id="facebook"><img class="w-100" src="../src/image/facebook.png" alt="btn-facebook"/></button>
+            <button type="button" class="btn btn-secondary btn-social ml-5" style="background-color: #F7FAF9" id="gmail"><img class="w-100" src="../src/image/gmail.png" alt="btn-gmail"/></button>
 
           </div>
           <div class="modal-footer">
@@ -53,11 +54,12 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Formulario de registro</h5>
+            <h5 class="modal-title">Formulario de registro</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -98,10 +100,10 @@
 
     <div class="row">
 
-      <div  class="card col-3 d-none d-lg-block" style="width: 18rem;">
+      <div  class="col-2 d-none d-lg-block" style="width: 18rem;">
         <div class="card-body">
           <img class="card-img-top" src="../src/image/noticia1.1.jpg" alt="Card image cap">
-          <p class="mt-2"><h6>Energia Eolica</h6></p>
+          <h6 class="mt-2">Energia Eolica</h6>
           <p class="card-text">La energía eólica es la energía obtenida a partir del viento, es decir, la energía cinética generada por efecto de las corrientes de aire, y que es convertida en otras formas útiles de energía para las actividades humanas.</p>
         </div>
         <hr>
@@ -112,61 +114,51 @@
         </div>
       </div>
 
-      
-
-      <div class="container col-8">
+      <div class="col-8 ml-5">
           <br>
           <div id="divPostsArea" class="form-post hiden">
-            <form action="">
+            <form>
               <div class="form-group">
                 <label for="txtAreaPost">
-                  <h3><b>Ideas para compartir</b></h3>
+                  <b>Ideas para compartir</b>
                 </label>
                 <textarea name="txtAreaPost" id="txtAreaPost"
-                  class="form-control form-textArea-rounded form-textArea-post"
-                  placeholder="¿Que ideas tienes?" ></textarea>
+                  class="form-control form-textArea-rounded"
+                  placeholder="¿Que ideas tienes?"></textarea>
 
                 <label for="sltPostType">Tipo de Post:</label>
-                <select id="sltPostType" class="form-control form-select">
-                  <option selected>Público</option>
+                <select id="sltPostType" class="form-control">
+                  <option>Público</option>
                   <option>Privado</option>
                 </select>
 
                 <button id="btnPublicar" type="button" class="btn btn-primary form-btn">Publicar</button>
               </div>
             </form>
-          </div>
-    
-          <!-- <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-sm-3">
-                    <div id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control" placeholder="Search"> <span class="input-group-addon">
-        
-                                <button type="submit">
-        
-                                    <span class="fa fa-search"></span>
-                            </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>         -->
 
-          <div id="divPosts" class="show">
+            <ul id="tabsJustified" class="nav nav-tabs">
+              <li class="nav-item" onclick="listarPublicos()" ><a href="" data-toggle="tab" class="nav-link small text-uppercase active">Público</a></li>
+              <li class="nav-item" onclick="listarPrivados()" ><a href=""  data-toggle="tab" class="nav-link small text-uppercase">Privado</a></li>
+            </ul>
             
           </div>
+
+          <div id="divPosts" class="show" >
+
       </div>
     </div>
+    <!-- </div> -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script> -->
+
     <script src="data.js"></script>
     <script src="main.js"></script>
+    <script src="validacion.js"></script>
     <script src="post.js"></script>
   </body>
 </html>
