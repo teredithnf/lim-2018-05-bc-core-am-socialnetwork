@@ -32,7 +32,7 @@ Es una organización ecologista y pacifista internacional, económica y polític
 
 Es una plataforma donde se promueven y practican los nuevos paradigmas: sustentabilidad, transparencia, consumo responsable, responsabilidad social, salud integral y creatividad.  
 
-## Parte I##
+## Parte I
 
 En esta primera parte nos enfocamos en planificar nuestro **Backlog** con la finalidad de trabajar en tareas  concretas que nos ayudara a cumplir con  nuestro primer sprint de entrega, el cual esta compuesta por sub tareas especfificas que fueron necesarias para implementar la primera parte de este gran proyecto.
 
@@ -45,7 +45,7 @@ Se realizo una reunion grupal con la finalidad de que cada integrante de este eq
 
 ![vista final interfaz pronosticada ]( https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37912153_1589964464447974_2917343861359509504_n.jpg?_nc_cat=0&oh=0dadcc58987326ae1b34ea15faf810ff&oe=5C10D7B5 "Vista final pronosticada ")
 
-![Formulario de Logueo / Registro](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37965975_1589964594447961_4868195909319524352_n.jpg?_nc_cat=0&oh=9db621fa14f1328f3a48d8879a9d4784&oe=5C100142"Logueo/ Registro")
+![Formulario de Logueo/ Registro](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37965975_1589964594447961_4868195909319524352_n.jpg?_nc_cat=0&oh=9db621fa14f1328f3a48d8879a9d4784&oe=5C100142"Logueo/ Registro")
 
 ![Vista Mobile interfaz](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/38008803_1589964667781287_7443262625586085888_n.jpg?_nc_cat=0&oh=4d76b5123dfc2fc881f24baeb5ec689d&oe=5C143976"Vista Mobile")
 
@@ -65,28 +65,26 @@ nuestro primer resultado de eso fue crear nuestro primer formulario para almacen
 
 Este formulario funcionaba en inicios conectado con la base de datos de firebase e inicialmente al registrarse con la aplicación Facebook o con cuentas de google, una vez completada esta parte se trabajo para poder iniciar sesión con correos electronicos distintos por ejemplo: Yahoo, Hotmail etc. Trabajada esta parte con exito empezamos a trabajar en la primera vista de la interfaz y nuestro primer resultado fue este:
 
-![Formulario vista Inicial] imagen formulario final  "Formulario")
+<!-- ![Formulario vista Inicial] imagen formulario final  "Formulario") -->
 
-##Parte II ##
+##Parte II
 
 En esta segunda parte del proyecto ya mas emocionadas y cada vez mas enamoradas de **Firebase** no fue tan deficil tomar la decision de trabajar todo conectadas a el... comenzamos a trabajar la sección del **Time Line/ Muro de publicaciones** y los **Like** con nuestro amigo de siempre **JavaScript** le regalamos interactividad para que le diera vida a eso que estaba plasmado en la interfaz y nuestro primer resultado fue este:
 
- ![ Time Line vista Inicial](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37956600_1589902214454199_1300682630290735104_n.jpg?_nc_cat=0&oh=7b353c828172916eaef91c2e118cb5eb&oe=5C0B817A "Time Line")
+ ![Time Line vista Inicial](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37956600_1589902214454199_1300682630290735104_n.jpg?_nc_cat=0&oh=7b353c828172916eaef91c2e118cb5eb&oe=5C0B817A "Time Line")
 
  En esta parte del proyecto decidimos hacer un estudio para evaluar el impacto que tenia la aplicacion al publico y asi poder detectar posibles fallas, nuestras primeras usuarias fueras colegas, sin duda nos ayudaron a detectar fallas y nos regalaron feedback positivos y de mejora, la prueba se llevo a cabo en lugar de trabajo de cada una de ellas.
 
- ![Detectando fallas con el publico ](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37964927_1589902137787540_1305635556511711232_n.jpg?_nc_cat=0&oh=959bd3094056ce250b085674f29fb3bc&oe=5C0F73B3 "Detectando fallas")
+ ![Detectando fallas con el publico](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37964927_1589902137787540_1305635556511711232_n.jpg?_nc_cat=0&oh=959bd3094056ce250b085674f29fb3bc&oe=5C0F73B3 "Detectando fallas")
 
  ![Detectando fallas con el publico](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37958613_1589902544454166_6811932553679732736_n.jpg?_nc_cat=0&oh=0791015670b133fe07a0392400a77e4e&oe=5BD9FA11 "Detectando fallas")
 
 
  Finiquitado el estudio y valorado el feedback agregamos los cambios necesarios a la publicación.
 
- ##Parte III##
+ ##Parte III
 
  En esta tercera parte del proyectos nuestro objetivo fue darle a las secciones de la interfaz los ultimos retoques para que se mostrara sin ningún detalle imperfecto, tanto para mobiles como para inicios en pantallas desktop
  y nuestro resultado final fue este:
 
  ![vista Mobile](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37907463_1589902607787493_1871031313419468800_n.jpg?_nc_cat=0&oh=180de9601775e21d8bef0aea50036465&oe=5BDCDE84 "Detectando fallas")
-
- ![Vista Desktop](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37907463_1589902607787493_1871031313419468800_n.jpg?_nc_cat=0&oh=180de9601775e21d8bef0aea50036465&oe=5BDCDE84 "Detectando fallas")
