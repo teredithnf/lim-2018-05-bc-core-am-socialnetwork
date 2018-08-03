@@ -21,36 +21,37 @@ const divPostsArea = document.getElementById('divPostsArea');
 const content = document.getElementById('content');
 
 let isUserAuthenticate = false;
+let userProfile = {};
 
 window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      console.log('existe usuario');
       // if (user.emailVerified) {
       let userUid = firebase.auth().currentUser.uid;
-      firebase.database().ref('/Users/' + userUid).on('value', (userRef) => {
+      firebase.database().ref('Users/' + userUid).on('value', (userRef) => {
         let user = userRef.val();
+        userProfile = user;
+        console.log(user);
         content.innerHTML = `bienvenid@  ${user.nombre}`;
         closeSesion.classList.remove('hiden');
         closeSesion.classList.add('show');
         editar.classList.remove('show');
         editar.classList.add('hiden');
-
-        divPostsArea.style.display = "block";
+        editar.classList.remove('show');
+        editar.classList.add('hiden');
+        divPostsArea.classList.remove('hiden');
+        divPostsArea.classList.add('show');
         isUserAuthenticate = true;
+        listarPublicos();
       });
-        isUserAuthenticate = true;
+      console.log(userUid);
+    }else{
+      divPostsArea.classList.remove('show');
+      divPostsArea.classList.add('hidden');
+      listarPublicos();
     }
-     else {
-      content.innerHTML = ``;
-      closeSesion.classList.remove('show');
-      closeSesion.classList.add('hiden');
-      editar.classList.add('show');
-      editar.classList.remove('hiden');
-
-      isUserAuthenticate = false;
-    }
-    listar()
-  })
+  });
 }
 
 
@@ -64,18 +65,11 @@ register.addEventListener('click', () => {
   } else {
     registerVal(email.value, password.value);
     alert('Has sido registrado exitosamente')
-  }
-})
+  };
+});
 
 ingreso.addEventListener('click', () => {
   ingresoVal(email1.value, password1.value);
-  // let useruid = firebase.auth().currentUser;
-  // console.log(useruid);
-  // firebase.database().ref('/Users/' + uid +)
-  // alert(user.displayName)
-  // content.innerHTML = `bienvenid@  ${user.displayName || document.getElementById('name').value}`;
-  // content.innerHTML += `<button type="button" class="btn btn-primary" >Publicar</button>`
-
 });
 
 gmail.addEventListener('click', () => {
@@ -88,12 +82,5 @@ facebook.addEventListener('click', () => {
 
 closeSesion.addEventListener('click', () => {
   close();
-
-  closeSesion.classList.remove('show');
-  closeSesion.classList.add('hiden');
-  editar.classList.add('show');
-  editar.classList.remove('hiden');
-
-  divPostsArea.style.display = "none";
-
-})
+  location.reload();
+});

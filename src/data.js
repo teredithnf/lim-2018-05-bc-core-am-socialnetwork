@@ -21,15 +21,6 @@ const guardaDatos = (user) => {
   }
   firebase.database().ref('Users/' + user.uid)
   .set(usuario)
-  userProfile = getUserProfile(user); //json
-}
-
-const getUserProfile = (user) => {
-  return {
-    uid: user.uid,
-    nombre: user.displayName,
-    foto: user.photoURL
-  };
 };
 
 const registerVal = (email, password) => {
@@ -51,7 +42,7 @@ const registerVal = (email, password) => {
     console.log(errorCode);
     console.log(errorMessage);
     });
-}
+};
 
 const ingresoVal = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -72,8 +63,8 @@ const close = () => {
       alert('Saliendo...');
     }).catch((error) => {
       console.log(error);
-    })
-  }
+    });
+  };
 
 const verificar = () => {
   let user = firebase.auth().currentUser;
@@ -81,15 +72,14 @@ const verificar = () => {
     alert('enviando correo');
   }).catch((error) => {
     console.log(error);
-  })
-}
+  });
+};
 
 const facebookLogin = () => {
   let provider = new firebase.auth.FacebookAuthProvider();
   provider.setCustomParameters({
   'display': 'popup'
   });
-  // provider.addScope('email');
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
       const user = result.user;
@@ -101,52 +91,13 @@ const facebookLogin = () => {
     console.log(error.email);
     console.log(error.credential);
 });
-}
+};
 
 const gmailLogin = () => {
   let provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
   .then((result)=> {
-    var token = result.credential.accessToken;
     var user = result.user;
-    console.log(user)
     guardaDatos(user);
-    // $('#content').append("<img src=${{result.user.photoURL}}/>")
-  }).catch((error) => {
-    console.log(error.code);
-    console.log(error.message);
-    console.log(error.email);
-    console.log(error.credential);
-});
+  });
 };
-
-const getId = (id) => {
-  return document.getElementById(id);
-}
-const validadorNombre = (name) => {
-    if ((/^([A-Za-z0-9\s]{8,})+$/g.test(name))) {
-        return true
-    } else {
-        return false
-    }
-}
-const validadorEmail = (email) => {
-    if (/^([a-zA-Z0-9._-]{3,})+@([a-zA-Z0-9.-]{5,})+\.([a-zA-Z]{2,})+$/.test(email)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-const validadorPassword = (password) => {
-    if (/^([A-Za-z0-9]{8,})+$/g.test(password)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-// por defecto las variables definidas se agregarn al objeto global window no es necesario hace esto de abajo xd, queria hacerlo para los test
-window.validadorNombre = validadorNombre;
-window.validadorEmail = validadorEmail;
-window.validadorPassword = validadorPassword;
