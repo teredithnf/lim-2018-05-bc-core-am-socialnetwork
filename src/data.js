@@ -9,11 +9,6 @@ let config = {
 
 firebase.initializeApp(config);
 
-var db = firebase.firestore();
-
-
-
-// const guardaDatos = (user, provider) => {
 const guardaDatos = (user) => {
   //console.log(guardaDatos);
   // alert(JSON.stringify(user, null, 2));
@@ -25,7 +20,6 @@ const guardaDatos = (user) => {
   }
   firebase.database().ref('Users/' + user.uid)
   .set(usuario)
-
 };
 
 const registerVal = (email, password) => {
