@@ -18,6 +18,7 @@ const divPosts1 = document.getElementById('divPosts1');
 const divPosts = document.getElementById('divPosts');
 const modal = document.getElementById('exampleModal');
 const divPostsArea = document.getElementById('divPostsArea');
+const content = document.getElementById('content');
 
 let isUserAuthenticate = false;
 let userProfile = {};
@@ -26,7 +27,6 @@ window.onload = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario');
-
       // if (user.emailVerified) {
       let userUid = firebase.auth().currentUser.uid;
       firebase.database().ref('Users/' + userUid).on('value', (userRef) => {
@@ -42,13 +42,16 @@ window.onload = () => {
         editar.classList.add('hiden');
         divPostsArea.classList.remove('hiden');
         divPostsArea.classList.add('show');
-        //listar(`${user.uid}`);
         isUserAuthenticate = true;
+        listarPublicos();
       });
       console.log(userUid);
+    }else{
+      divPostsArea.classList.remove('show');
+      divPostsArea.classList.add('hidden');
+      listarPublicos();
     }
   });
-  listar();
 }
 
 

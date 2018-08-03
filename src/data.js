@@ -10,7 +10,7 @@ let config = {
 firebase.initializeApp(config);
 
 const guardaDatos = (user) => {
-  console.log(guardaDatos);
+  //console.log(guardaDatos);
   // alert(JSON.stringify(user, null, 2));
   let usuario = {
     uid: user.uid,
