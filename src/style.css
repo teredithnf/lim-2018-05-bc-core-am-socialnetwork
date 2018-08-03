@@ -1,10 +1,19 @@
+.navbar-brand{
+ font-family: 'Indie Flower', cursive;
+ font-size: 40px;
+}
+.navbar-brand1{
+ font-family: 'Indie Flower', cursive;
+ font-size: 20px;
+}
+
 .hiden {
   display: none;
 }
 
 .show{
   display: block;
-} 
+}
 
 .btn-social{
   width:50px;
@@ -57,4 +66,8 @@
   width:auto;
   height:auto;
   margin-right: 10px;
+}
+
+.row{
+  width: 100%
 }
