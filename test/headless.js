@@ -14,5 +14,5 @@ global.firebase = firebasemock.MockFirebaseSdk(
 );
 
 require('../src/validacion');
-// require('../src/data');
+// require('../src/post');
 require('./data.spec.js');
