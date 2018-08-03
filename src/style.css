@@ -1,3 +1,11 @@
+row {
+  width: 100%;
+}
+.navbar-brand{
+  font-family: 'Indie Flower', cursive;
+  font-size: 40px;
+}
+
 .hiden {
   display: none;
 }
