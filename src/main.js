@@ -33,7 +33,7 @@ window.onload = () => {
         let user = userRef.val();
         userProfile = user;
         console.log(user);
-        content.innerHTML = `bienvenid@  ${user.nombre}`;
+        content.innerHTML = `Bienvenid@  ${user.nombre}`;
         closeSesion.classList.remove('hiden');
         closeSesion.classList.add('show');
         editar.classList.remove('show');

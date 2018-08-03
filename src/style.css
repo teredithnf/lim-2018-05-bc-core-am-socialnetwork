@@ -6,6 +6,11 @@ row {
   font-size: 40px;
 }
 
+.navbar-brand1{
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+}
+
 .hiden {
   display: none;
 }
