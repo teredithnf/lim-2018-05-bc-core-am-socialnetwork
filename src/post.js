@@ -39,9 +39,9 @@ const createPost = (postSnapshot) => {
                                   <div class="row">
                                       <div class="col-md-12">
                                           <div class="media">
-                                            <div class="media-left divPhoto">
+                                            <div class="media-left divPhoto" >
                                               <a href="#">
-                                                <img class="media-object photo-profile" alt="fotoUsuario" style="width:40px; height:auto; border-radius:50px" src="${post.data().userProfile.foto}">
+                                                <img class="media-object photo-profile img-photo-profile" alt="fotoUsuario" src="${post.data().userProfile.foto}">
                                               </a>
                                             </div>
                                             <div class="media-body">
