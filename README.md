@@ -1,4 +1,4 @@
-# Red Social 
+# Red Social
 
 ## Ambientalist Lovers
 
@@ -20,15 +20,15 @@ En la actualidad las mas exitosas redes sociales cuentan con elementos principal
 - Logo
 - Avatar de los usuarios
 - Muro o bibliografía
-- Post 
+- Post
 - Registro de usuarios
 
-## Principales usuarios 
+## Principales usuarios
 
 Nuestros principales usuarios serian personas interesadas en construir un futuro preservando el medio ambiente generando ideas que contribuyan a su ejecución, tambien aquellas personas que tengan interes por conocer sobre estos temas, y  inversionistas que esten en la busqueda de ideas potenciales en las que puedan invertir para preservar nuestro mundo.
 
 ## Descubriendo las necesidades del usuario
- 
+
  Mediante investigaciones descubrimos que las nuevas generaciones son mas concientes de el daño que hemos causado en el medio ambiente, por esto nuestras nuevas generaciones buscan compartir  conocimiento, ideas y demas para lograr la conservación de nuestro planeta.
 
 ## Problemas que resuelve el producto para los usuarios
@@ -74,14 +74,15 @@ Es una organización ecologista y pacifista internacional, económica y polític
 
 * [ecoosfera](https://ecoosfera.com/)
 
-Es una plataforma donde se promueven y practican los nuevos paradigmas: sustentabilidad, transparencia, consumo responsable, responsabilidad social, salud integral y creatividad. 
+Es una plataforma donde se promueven y practican los nuevos paradigmas: sustentabilidad, transparencia, consumo responsable, responsabilidad social, salud integral y creatividad.
 
 # Resumen de entrevista con usuario
 
 En las entrevistas para saber si el tema de la Red Social con fines ambientalistas era viable, encontramos que la mayoria de personas entrevistadas si les interesaba el tema o que si le gustaria que hubiera un tipo de red con este enfoque, asi mismo encontramos que las personas entrevistadas si quisieran recibir ideas sobre conservación del medio ambiente, también nos dimos cuenta que habia desinformacion  en cuanto a los temas tratados y que había interes por conocer sobre estos recursos y finalmente llegamos a la conclusión de que si era un proyecto viable ya que habia potenciales usuarios.
 
 ## Links del prototipo de alta Fidelidad
-
+* [Mobile prototype] (https://marvelapp.com/5e8jbdj)
+* [Desktop prototype] (https://marvelapp.com/41eg827)
 
 ## Conclusiones de testing con el prototipo de alta fidelidad con usuarios
 
@@ -92,6 +93,7 @@ Concluimos que el prototipado de alta fidelidad era agradable para los usuarios,
 
 Con las pruebas que registramos con los usuarios en el producto HTML , nos dimos cuenta que la función de logueo y registro  fue muy confusa para varias de nuestras usuarias , hubo mucho confusión y pruebas de ensayo y error hasta que al fin llegaban a la solución de una forma no muy fluida, asimismo tuvimos un posteo en nuestra pagina de una usuaria que comento que le pagina le daba sensacion de que le ibamos a vender algo de caracter ambientalista; por esto tuvimos que reestructurar nuestro registro y logueo de forma que el usuario puediera encontrar una forma intuitiva y fluida de poder acoplarse a nuestra red, tambien agregamos imagenes llamativas referente al tema ambientalista para darle una bienvenida mas cálida al usuario.
 
+![testing HTML]("src/image/baja-fidelidad.jpg")
 
 # Planificacion del Proyecto
 ## Parte I
@@ -107,9 +109,7 @@ Se realizo una reunion grupal con la finalidad de que cada integrante de este eq
 
 ![vista final interfaz pronosticada ]( https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37912153_1589964464447974_2917343861359509504_n.jpg?_nc_cat=0&oh=0dadcc58987326ae1b34ea15faf810ff&oe=5C10D7B5 "Vista final pronosticada ")
 
-![Formulario de Logueo/ Registro](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37965975_1589964594447961_4868195909319524352_n.jpg?_nc_cat=0&oh=9db621fa14f1328f3a48d8879a9d4784&oe=5C100142"Logueo/ Registro")
 
-![Vista Mobile interfaz](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/38008803_1589964667781287_7443262625586085888_n.jpg?_nc_cat=0&oh=4d76b5123dfc2fc881f24baeb5ec689d&oe=5C143976"Vista Mobile")
 
 <!-- ###Prototipos de alta fidelidad aprobados###
 
@@ -123,7 +123,8 @@ Una vez concretado nuestro modelo en baja fidelidad se procedio con el **Prototi
 Partiendo de nuestra planificación y la aprobación de nuestro prototipo, nuestro segundo paso fue estudiar como funciona **Firebase** lo  cual se convirtió en una herramienta fundamental para el desarrollo de la aplicacion, ayudandonos a crear la base de datos y enseñandonos a como manipularla, fue esta herramienta la base para el funcionamiento de almacenamiento de todo lo que sucede en la interfaz,
 nuestro primer resultado de eso fue crear nuestro primer formulario para almacenar los datos de nuestros subcriptores y su primera vista fue esta:
 
-![Formulario vista Inicial](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37910724_1589903211120766_1816088734559371264_n.jpg?_nc_cat=0&oh=a49607931125fe599aeb4a37a92c7d30&oe=5BD17CC8 "Formulario")
+![Formulario vista Inicial]("image/baja-fidelidad.jpg")
+![Favicon]("favicon.jpg")
 
 Este formulario funcionaba en inicios conectado con la base de datos de firebase e inicialmente al registrarse con la aplicación Facebook o con cuentas de google, una vez completada esta parte se trabajo para poder iniciar sesión con correos electronicos distintos por ejemplo: Yahoo, Hotmail etc. Trabajada esta parte con exito empezamos a trabajar en la primera vista de la interfaz y nuestro primer resultado fue este:
 
@@ -137,10 +138,6 @@ En esta segunda parte del proyecto ya mas emocionadas y cada vez mas enamoradas 
 
  En esta parte del proyecto decidimos hacer un estudio para evaluar el impacto que tenia la aplicacion al publico y asi poder detectar posibles fallas, nuestras primeras usuarias fueras colegas, sin duda nos ayudaron a detectar fallas y nos regalaron feedback positivos y de mejora, la prueba se llevo a cabo en lugar de trabajo de cada una de ellas.
 
- ![Detectando fallas con el publico](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37964927_1589902137787540_1305635556511711232_n.jpg?_nc_cat=0&oh=959bd3094056ce250b085674f29fb3bc&oe=5C0F73B3 "Detectando fallas")
-
- ![Detectando fallas con el publico](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37958613_1589902544454166_6811932553679732736_n.jpg?_nc_cat=0&oh=0791015670b133fe07a0392400a77e4e&oe=5BD9FA11 "Detectando fallas")
-
 
  Finiquitado el estudio y valorado el feedback agregamos los cambios necesarios a la publicación.
 
@@ -149,4 +146,4 @@ En esta segunda parte del proyecto ya mas emocionadas y cada vez mas enamoradas 
  En esta tercera parte del proyectos nuestro objetivo fue darle a las secciones de la interfaz los ultimos retoques para que se mostrara sin ningún detalle imperfecto, tanto para mobiles como para inicios en pantallas desktop
  y nuestro resultado final fue este:
 
- ![vista Mobile](https://scontent.flim10-1.fna.fbcdn.net/v/t1.15752-9/37907463_1589902607787493_1871031313419468800_n.jpg?_nc_cat=0&oh=180de9601775e21d8bef0aea50036465&oe=5BDCDE84 "Detectando fallas")
+ ![vista Mobile]("image/vista-mobile.png")

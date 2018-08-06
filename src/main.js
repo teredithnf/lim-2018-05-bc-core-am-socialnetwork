@@ -63,7 +63,7 @@ register.addEventListener('click', () => {
   } else if (validadorPassword(password.value) === false) {
     alert('tiene que tener como minimo 6 caracteres y letras')
   } else {
-    registerVal(email.value, passwor  d.value);
+    registerVal(email.value, password.value);
     alert('Has sido registrado exitosamente')
   };
 });
