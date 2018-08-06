@@ -93,7 +93,7 @@ Concluimos que el prototipado de alta fidelidad era agradable para los usuarios,
 
 Con las pruebas que registramos con los usuarios en el producto HTML , nos dimos cuenta que la función de logueo y registro  fue muy confusa para varias de nuestras usuarias , hubo mucho confusión y pruebas de ensayo y error hasta que al fin llegaban a la solución de una forma no muy fluida, asimismo tuvimos un posteo en nuestra pagina de una usuaria que comento que le pagina le daba sensacion de que le ibamos a vender algo de caracter ambientalista; por esto tuvimos que reestructurar nuestro registro y logueo de forma que el usuario puediera encontrar una forma intuitiva y fluida de poder acoplarse a nuestra red, tambien agregamos imagenes llamativas referente al tema ambientalista para darle una bienvenida mas cálida al usuario.
 
-![testing HTML](https://ibb.co/bSwyOz)
+[testing HTML](https://ibb.co/bSwyOz)
 
 # Planificacion del Proyecto
 ## Parte I
@@ -123,8 +123,8 @@ Una vez concretado nuestro modelo en baja fidelidad se procedio con el **Prototi
 Partiendo de nuestra planificación y la aprobación de nuestro prototipo, nuestro segundo paso fue estudiar como funciona **Firebase** lo  cual se convirtió en una herramienta fundamental para el desarrollo de la aplicacion, ayudandonos a crear la base de datos y enseñandonos a como manipularla, fue esta herramienta la base para el funcionamiento de almacenamiento de todo lo que sucede en la interfaz,
 nuestro primer resultado de eso fue crear nuestro primer formulario para almacenar los datos de nuestros subcriptores y su primera vista fue esta:
 
-![Formulario vista Inicial](https://ibb.co/h7czVe)
-![Favicon](https://ibb.co/dVPJOz)
+[Formulario vista Inicial](http://subirimagen.me/uploads/20180806091209.jpg)
+[Favicon](https://ibb.co/dVPJOz)
 
 Este formulario funcionaba en inicios conectado con la base de datos de firebase e inicialmente al registrarse con la aplicación Facebook o con cuentas de google, una vez completada esta parte se trabajo para poder iniciar sesión con correos electronicos distintos por ejemplo: Yahoo, Hotmail etc. Trabajada esta parte con exito empezamos a trabajar en la primera vista de la interfaz y nuestro primer resultado fue este:
 
@@ -146,4 +146,4 @@ En esta segunda parte del proyecto ya mas emocionadas y cada vez mas enamoradas 
  En esta tercera parte del proyectos nuestro objetivo fue darle a las secciones de la interfaz los ultimos retoques para que se mostrara sin ningún detalle imperfecto, tanto para mobiles como para inicios en pantallas desktop
  y nuestro resultado final fue este:
 
- ![vista Mobile](https://ibb.co/mFDCiz)
+ [vista Mobile](https://ibb.co/mFDCiz)
